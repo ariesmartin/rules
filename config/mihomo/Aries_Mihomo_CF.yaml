@@ -75,109 +75,72 @@ proxy-groups:
 - name: 国内直连
   type: select
   proxies:
-  - 全部故转
-  - ED 全部故转
-  - ED 全部实测
-  - ED 全部手选
-  - CC 全部故转
-  - CC 全部实测
-  - CC 全部手选
-  - 香港故转
-  - 新加坡故转
-  - 日本故转
-  - 台湾故转
-  - 美国故转
   - 直连
+  - 普通最优
+  - 下载最优
+  - 普通手选
+  - 自建保留
   - 拒绝
-  - 全部实测
-  - 全部手选
   icon: https://api.iconify.design/fluent-emoji-flat/house.svg
 - name: 国外默认
   type: select
   proxies:
-  - 全部故转
-  - 全部实测
-  - 全部手选
+  - 普通最优
+  - 下载最优
+  - 普通手选
+  - 下载手选
   - 自建保留
-  - ED 全部故转
-  - ED 全部实测
-  - ED 全部手选
-  - CC 全部故转
-  - CC 全部实测
-  - CC 全部手选
-  - 香港故转
-  - 新加坡故转
-  - 日本故转
-  - 台湾故转
-  - 美国故转
-  - 大文件下载
-  - 搜索
+  - 香港手选
+  - 新加坡手选
+  - 日本手选
+  - 台湾手选
+  - 美国手选
   - 直连
   - 拒绝
   icon: https://api.iconify.design/fluent-emoji-flat/globe-showing-asia-australia.svg
 - name: 搜索
   type: select
   proxies:
+  - 普通最优
+  - 普通手选
   - 自建保留
-  - 全部故转
-  - ED 全部故转
-  - ED 全部实测
-  - ED 全部手选
-  - CC 全部故转
-  - CC 全部实测
-  - CC 全部手选
-  - 香港故转
-  - 新加坡故转
-  - 日本故转
-  - 台湾故转
-  - 美国故转
-  - 全部实测
-  - 全部手选
+  - 香港手选
+  - 新加坡手选
+  - 日本手选
+  - 台湾手选
+  - 美国手选
   - 直连
   - 拒绝
   icon: https://api.iconify.design/fluent-emoji-flat/magnifying-glass-tilted-left.svg
 - name: Google 搜索
   type: select
   proxies:
+  - 普通最优
+  - 下载最优
+  - 普通手选
+  - 下载手选
   - 自建保留
-  - 全部故转
-  - ED 全部故转
-  - ED 全部实测
-  - ED 全部手选
-  - CC 全部故转
-  - CC 全部实测
-  - CC 全部手选
-  - 香港故转
-  - 新加坡故转
-  - 日本故转
-  - 台湾故转
-  - 美国故转
-  - 搜索
-  - 全部实测
-  - 全部手选
+  - 香港手选
+  - 新加坡手选
+  - 日本手选
+  - 台湾手选
+  - 美国手选
   - 直连
   - 拒绝
   icon: https://api.iconify.design/logos/google-icon.svg
 - name: Google 服务
   type: select
   proxies:
+  - 普通最优
+  - 下载最优
+  - 普通手选
+  - 下载手选
   - 自建保留
-  - 全部故转
-  - ED 全部故转
-  - ED 全部实测
-  - ED 全部手选
-  - CC 全部故转
-  - CC 全部实测
-  - CC 全部手选
-  - 香港故转
-  - 新加坡故转
-  - 日本故转
-  - 台湾故转
-  - 美国故转
-  - 大文件下载
-  - Google 搜索
-  - 全部实测
-  - 全部手选
+  - 香港手选
+  - 新加坡手选
+  - 日本手选
+  - 台湾手选
+  - 美国手选
   - 直连
   - 拒绝
   icon: https://api.iconify.design/logos/google-icon.svg
@@ -185,786 +148,402 @@ proxy-groups:
   type: select
   proxies:
   - 自建保留
-  - 全部故转
-  - ED 全部故转
-  - ED 全部实测
-  - ED 全部手选
-  - CC 全部故转
-  - CC 全部实测
-  - CC 全部手选
-  - 香港故转
-  - 新加坡故转
-  - 日本故转
-  - 台湾故转
-  - 美国故转
-  - 搜索
-  - 全部实测
-  - 全部手选
+  - 普通最优
+  - 普通手选
+  - 下载最优
+  - 香港手选
+  - 新加坡手选
+  - 日本手选
+  - 台湾手选
+  - 美国手选
   - 直连
   - 拒绝
   icon: https://api.iconify.design/fluent-emoji-flat/robot.svg
 - name: ChatGPT
   type: select
   proxies:
-  - 自建保留
-  - 全部故转
-  - ED 全部故转
-  - ED 全部实测
-  - ED 全部手选
-  - CC 全部故转
-  - CC 全部实测
-  - CC 全部手选
-  - 香港故转
-  - 新加坡故转
-  - 日本故转
-  - 台湾故转
-  - 美国故转
   - AI 总入口
-  - 搜索
-  - 全部实测
-  - 全部手选
+  - 自建保留
+  - 普通最优
+  - 普通手选
+  - 下载最优
+  - 香港手选
+  - 新加坡手选
+  - 日本手选
+  - 台湾手选
+  - 美国手选
   - 直连
   - 拒绝
-  icon: https://api.iconify.design/logos/openai-icon.svg
-- type: select
+  icon: https://api.iconify.design/simple-icons/openai.svg?color=%2374aa9c
+- name: Meta AI
+  type: select
   proxies:
-  - 自建保留
-  - 全部故转
-  - ED 全部故转
-  - ED 全部实测
-  - ED 全部手选
-  - CC 全部故转
-  - CC 全部实测
-  - CC 全部手选
-  - 香港故转
-  - 新加坡故转
-  - 日本故转
-  - 台湾故转
-  - 美国故转
   - AI 总入口
-  - 搜索
-  - 全部实测
-  - 全部手选
+  - 自建保留
+  - 普通最优
+  - 普通手选
+  - 下载最优
+  - 香港手选
+  - 新加坡手选
+  - 日本手选
+  - 台湾手选
+  - 美国手选
   - 直连
   - 拒绝
-  name: Meta AI
   icon: https://api.iconify.design/logos/meta-icon.svg
-- type: select
+- name: Perplexity
+  type: select
   proxies:
-  - 自建保留
-  - 全部故转
-  - ED 全部故转
-  - ED 全部实测
-  - ED 全部手选
-  - CC 全部故转
-  - CC 全部实测
-  - CC 全部手选
-  - 香港故转
-  - 新加坡故转
-  - 日本故转
-  - 台湾故转
-  - 美国故转
   - AI 总入口
-  - 搜索
-  - 全部实测
-  - 全部手选
+  - 自建保留
+  - 普通最优
+  - 普通手选
+  - 下载最优
+  - 香港手选
+  - 新加坡手选
+  - 日本手选
+  - 台湾手选
+  - 美国手选
   - 直连
   - 拒绝
-  name: Perplexity
-  icon: https://api.iconify.design/logos/perplexity-icon.svg
+  icon: https://api.iconify.design/simple-icons/perplexity.svg?color=%2320b8cd
 - name: 大文件下载
   type: select
-  include-all: true
-  filter: ^((?!(直连|拒绝|COMPATIBLE|PASS|REJECT|REJECT-DROP|BW-自建|自建)).)*$
   proxies:
-  - 下载故转
-  - 下载实测
+  - 下载最优
   - 下载手选
+  - 普通最优
+  - 普通手选
   - 自建保留
-  - 全部故转
-  - ED 全部故转
-  - ED 全部实测
-  - ED 全部手选
-  - CC 全部故转
-  - CC 全部实测
-  - CC 全部手选
-  - 香港故转
-  - 新加坡故转
-  - 日本故转
-  - 台湾故转
-  - 美国故转
-  - 全部实测
-  - 全部手选
+  - 香港手选
+  - 新加坡手选
+  - 日本手选
+  - 台湾手选
+  - 美国手选
   - 直连
   - 拒绝
   icon: https://api.iconify.design/fluent-emoji-flat/package.svg
 - name: HuggingFace
   type: select
   proxies:
-  - 下载手选
-  - 下载实测
-  - 自建保留
-  - 全部故转
-  - ED 全部故转
-  - ED 全部实测
-  - ED 全部手选
-  - CC 全部故转
-  - CC 全部实测
-  - CC 全部手选
-  - 香港故转
-  - 新加坡故转
-  - 日本故转
-  - 台湾故转
-  - 美国故转
-  - 下载故转
-  - 全部实测
-  - 全部手选
   - 大文件下载
+  - 下载最优
+  - 下载手选
+  - 普通最优
+  - 普通手选
+  - 自建保留
+  - 香港手选
+  - 新加坡手选
+  - 日本手选
+  - 台湾手选
+  - 美国手选
   - 直连
   - 拒绝
-  icon: https://api.iconify.design/logos/hugging-face-icon.svg
+  icon: https://api.iconify.design/simple-icons/huggingface.svg?color=%23ff9d00
 - name: GitHub
   type: select
   proxies:
-  - 下载手选
-  - 下载实测
-  - 自建保留
-  - 全部故转
-  - ED 全部故转
-  - ED 全部实测
-  - ED 全部手选
-  - CC 全部故转
-  - CC 全部实测
-  - CC 全部手选
-  - 香港故转
-  - 新加坡故转
-  - 日本故转
-  - 台湾故转
-  - 美国故转
-  - 下载故转
-  - 全部实测
-  - 全部手选
   - 大文件下载
+  - 下载最优
+  - 下载手选
+  - 普通最优
+  - 普通手选
+  - 自建保留
+  - 香港手选
+  - 新加坡手选
+  - 日本手选
+  - 台湾手选
+  - 美国手选
   - 直连
   - 拒绝
-  icon: https://api.iconify.design/skill-icons/github-dark.svg
+  icon: https://api.iconify.design/logos/github-icon.svg
 - name: YouTube
   type: select
   proxies:
-  - 全部故转
-  - 全部实测
-  - 全部手选
+  - 普通最优
+  - 下载最优
+  - 普通手选
+  - 下载手选
   - 自建保留
-  - ED 全部故转
-  - ED 全部实测
-  - ED 全部手选
-  - CC 全部故转
-  - CC 全部实测
-  - CC 全部手选
-  - 香港故转
-  - 新加坡故转
-  - 日本故转
-  - 台湾故转
-  - 美国故转
+  - 香港手选
+  - 新加坡手选
+  - 日本手选
+  - 台湾手选
+  - 美国手选
   - 直连
   - 拒绝
   icon: https://api.iconify.design/logos/youtube-icon.svg
 - name: TikTok
   type: select
   proxies:
-  - 全部故转
-  - 全部实测
-  - 全部手选
+  - 普通最优
+  - 下载最优
+  - 普通手选
+  - 下载手选
   - 自建保留
-  - ED 全部故转
-  - ED 全部实测
-  - ED 全部手选
-  - CC 全部故转
-  - CC 全部实测
-  - CC 全部手选
-  - 香港故转
-  - 新加坡故转
-  - 日本故转
-  - 台湾故转
-  - 美国故转
+  - 香港手选
+  - 新加坡手选
+  - 日本手选
+  - 台湾手选
+  - 美国手选
   - 直连
   - 拒绝
   icon: https://api.iconify.design/logos/tiktok-icon.svg
 - name: 流媒体
   type: select
   proxies:
-  - 全部故转
-  - 全部实测
-  - 全部手选
+  - 普通最优
+  - 下载最优
+  - 普通手选
+  - 下载手选
   - 自建保留
-  - ED 全部故转
-  - ED 全部实测
-  - ED 全部手选
-  - CC 全部故转
-  - CC 全部实测
-  - CC 全部手选
-  - 香港故转
-  - 新加坡故转
-  - 日本故转
-  - 台湾故转
-  - 美国故转
+  - 香港手选
+  - 新加坡手选
+  - 日本手选
+  - 台湾手选
+  - 美国手选
   - 直连
   - 拒绝
-  icon: https://api.iconify.design/fluent-emoji-flat/clapper-board.svg
-- type: select
+  icon: https://api.iconify.design/logos/netflix-icon.svg
+- name: Reddit
+  type: select
   proxies:
-  - 全部故转
-  - 全部实测
-  - 全部手选
+  - 普通最优
+  - 下载最优
+  - 普通手选
+  - 下载手选
   - 自建保留
-  - ED 全部故转
-  - ED 全部实测
-  - ED 全部手选
-  - CC 全部故转
-  - CC 全部实测
-  - CC 全部手选
-  - 香港故转
-  - 新加坡故转
-  - 日本故转
-  - 台湾故转
-  - 美国故转
-  - 搜索
+  - 香港手选
+  - 新加坡手选
+  - 日本手选
+  - 台湾手选
+  - 美国手选
   - 直连
   - 拒绝
-  name: Reddit
   icon: https://api.iconify.design/logos/reddit-icon.svg
-- type: select
+- name: NVIDIA
+  type: select
   proxies:
-  - 下载手选
-  - 下载实测
-  - 自建保留
-  - 全部故转
-  - ED 全部故转
-  - ED 全部实测
-  - ED 全部手选
-  - CC 全部故转
-  - CC 全部实测
-  - CC 全部手选
-  - 香港故转
-  - 新加坡故转
-  - 日本故转
-  - 台湾故转
-  - 美国故转
-  - 下载故转
-  - 全部实测
-  - 全部手选
   - 大文件下载
+  - 下载最优
+  - 下载手选
+  - 普通最优
+  - 普通手选
+  - 自建保留
+  - 香港手选
+  - 新加坡手选
+  - 日本手选
+  - 台湾手选
+  - 美国手选
   - 直连
   - 拒绝
-  name: NVIDIA
   icon: https://api.iconify.design/logos/nvidia.svg
-- type: select
+- name: Apple
+  type: select
   proxies:
-  - 自建保留
-  - 全部故转
-  - ED 全部故转
-  - ED 全部实测
-  - ED 全部手选
-  - CC 全部故转
-  - CC 全部实测
-  - CC 全部手选
-  - 香港故转
-  - 新加坡故转
-  - 日本故转
-  - 台湾故转
-  - 美国故转
-  - 大文件下载
-  - 全部实测
-  - 全部手选
   - 直连
+  - 普通最优
+  - 下载最优
+  - 普通手选
+  - 自建保留
   - 拒绝
-  name: Apple
   icon: https://api.iconify.design/logos/apple.svg
-- type: select
+- name: Microsoft
+  type: select
   proxies:
-  - 下载手选
-  - 下载实测
-  - 下载故转
-  - 自建保留
-  - 全部故转
-  - ED 全部故转
-  - ED 全部实测
-  - ED 全部手选
-  - CC 全部故转
-  - CC 全部实测
-  - CC 全部手选
-  - 香港故转
-  - 新加坡故转
-  - 日本故转
-  - 台湾故转
-  - 美国故转
   - 大文件下载
-  - 全部实测
-  - 全部手选
+  - 下载最优
+  - 下载手选
+  - 普通最优
+  - 普通手选
+  - 自建保留
+  - 香港手选
+  - 新加坡手选
+  - 日本手选
+  - 台湾手选
+  - 美国手选
   - 直连
   - 拒绝
-  name: Microsoft
   icon: https://api.iconify.design/logos/microsoft-icon.svg
 - name: Steam 下载
   type: select
   proxies:
-  - 下载手选
-  - 下载实测
-  - 下载故转
-  - 自建保留
   - 大文件下载
-  - 全部故转
-  - ED 全部故转
-  - ED 全部实测
-  - ED 全部手选
-  - CC 全部故转
-  - CC 全部实测
-  - CC 全部手选
-  - 香港故转
-  - 新加坡故转
-  - 日本故转
-  - 台湾故转
-  - 美国故转
-  - 游戏
-  - 全部实测
-  - 全部手选
+  - 下载最优
+  - 下载手选
+  - 普通最优
+  - 普通手选
+  - 自建保留
+  - 香港手选
+  - 新加坡手选
+  - 日本手选
+  - 台湾手选
+  - 美国手选
   - 直连
   - 拒绝
   icon: https://api.iconify.design/logos/steam.svg
-- type: select
+- name: 游戏
+  type: select
   proxies:
   - 大文件下载
-  - 下载故转
-  - 下载实测
+  - 下载最优
   - 下载手选
-  - 全部故转
-  - 全部实测
-  - 全部手选
+  - 普通最优
+  - 普通手选
   - 自建保留
-  - ED 全部故转
-  - ED 全部实测
-  - ED 全部手选
-  - CC 全部故转
-  - CC 全部实测
-  - CC 全部手选
-  - 香港故转
-  - 新加坡故转
-  - 日本故转
-  - 台湾故转
-  - 美国故转
+  - 香港手选
+  - 新加坡手选
+  - 日本手选
+  - 台湾手选
+  - 美国手选
   - 直连
   - 拒绝
-  name: 游戏
   icon: https://api.iconify.design/fluent-emoji-flat/video-game.svg
-- type: select
+- name: 加密金融
+  type: select
   proxies:
-  - 全部故转
-  - 全部实测
-  - 全部手选
+  - 普通最优
+  - 下载最优
+  - 普通手选
+  - 下载手选
   - 自建保留
-  - ED 全部故转
-  - ED 全部实测
-  - ED 全部手选
-  - CC 全部故转
-  - CC 全部实测
-  - CC 全部手选
-  - 香港故转
-  - 新加坡故转
-  - 日本故转
-  - 台湾故转
-  - 美国故转
-  - 搜索
+  - 香港手选
+  - 新加坡手选
+  - 日本手选
+  - 台湾手选
+  - 美国手选
   - 直连
   - 拒绝
-  name: 加密金融
   icon: https://api.iconify.design/cryptocurrency-color/btc.svg
-- type: select
+- name: 测试
+  type: select
   proxies:
-  - 全部故转
-  - 全部实测
-  - 全部手选
+  - 普通最优
+  - 下载最优
+  - 普通手选
+  - 下载手选
   - 自建保留
-  - ED 全部故转
-  - ED 全部实测
-  - ED 全部手选
-  - CC 全部故转
-  - CC 全部实测
-  - CC 全部手选
-  - 香港故转
-  - 新加坡故转
-  - 日本故转
-  - 台湾故转
-  - 美国故转
+  - 香港手选
+  - 新加坡手选
+  - 日本手选
+  - 台湾手选
+  - 美国手选
   - 直连
   - 拒绝
-  name: 测试
   icon: https://api.iconify.design/fluent-emoji-flat/test-tube.svg
-- name: 自建保留
+- name: 其他兜底
   type: select
-  include-all: true
-  filter: (?i)(BW-自建|自建)
-  proxies: null
-  icon: https://api.iconify.design/fluent-emoji-flat/locked-with-key.svg
-- name: 下载实测
-  type: select
-  include-all: true
-  filter: ^((?!(直连|拒绝|COMPATIBLE|PASS|REJECT|REJECT-DROP|BW-自建|自建)).)*$
+  proxies:
+  - 普通最优
+  - 下载最优
+  - 普通手选
+  - 下载手选
+  - 自建保留
+  - 香港手选
+  - 新加坡手选
+  - 日本手选
+  - 台湾手选
+  - 美国手选
+  - 直连
+  - 拒绝
+  icon: https://api.iconify.design/fluent-emoji-flat/repeat-button.svg
+- name: 普通最优
+  type: fallback
+  interval: 180
+  lazy: false
+  url: https://www.gstatic.com/generate_204
+  proxies:
+  - 普通自动 01
+  - 普通自动 02
+  - 普通自动 03
+  - 普通手选
+  icon: https://api.iconify.design/fluent-emoji-flat/high-voltage.svg
+- name: 下载最优
+  type: fallback
+  interval: 180
+  lazy: false
+  url: https://www.gstatic.com/generate_204
+  proxies:
+  - 下载自动 01
+  - 下载自动 02
+  - 下载自动 03
+  - 下载手选
   icon: https://api.iconify.design/fluent-emoji-flat/package.svg
-- name: 下载实测 01
+- name: 普通手选
   type: select
   include-all: true
   filter: ^((?!(直连|拒绝|COMPATIBLE|PASS|REJECT|REJECT-DROP|BW-自建|自建)).)*$
-  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
-- name: 下载实测 02
-  type: select
-  include-all: true
-  filter: ^((?!(直连|拒绝|COMPATIBLE|PASS|REJECT|REJECT-DROP|BW-自建|自建)).)*$
-  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
-- name: 下载实测 03
-  type: select
-  include-all: true
-  filter: ^((?!(直连|拒绝|COMPATIBLE|PASS|REJECT|REJECT-DROP|BW-自建|自建)).)*$
-  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
+  icon: https://api.iconify.design/fluent-emoji-flat/control-knobs.svg
 - name: 下载手选
   type: select
   include-all: true
   filter: ^((?!(直连|拒绝|COMPATIBLE|PASS|REJECT|REJECT-DROP|BW-自建|自建)).)*$
-  icon: https://api.iconify.design/fluent-emoji-flat/package.svg
-- name: 下载故转
-  type: fallback
-  interval: 180
-  lazy: false
-  url: https://www.gstatic.com/generate_204
-  proxies:
-  - 下载实测 01
-  - 下载实测 02
-  - 下载实测 03
-  - 下载手选
-  icon: https://api.iconify.design/fluent-emoji-flat/repeat-button.svg
-- name: ED 全部实测
+  icon: https://api.iconify.design/fluent-emoji-flat/control-knobs.svg
+- name: 自建保留
   type: select
   include-all: true
-  filter: (?i)(EDHK|EDUS)
-  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
-- name: ED 全部实测 01
-  type: select
-  include-all: true
-  filter: (?i)(EDHK|EDUS)
-  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
-- name: ED 全部实测 02
-  type: select
-  include-all: true
-  filter: (?i)(EDHK|EDUS)
-  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
-- name: ED 全部实测 03
-  type: select
-  include-all: true
-  filter: (?i)(EDHK|EDUS)
-  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
-- name: ED 全部手选
-  type: select
-  include-all: true
-  filter: (?i)(EDHK|EDUS)
-  icon: https://api.iconify.design/fluent-emoji-flat/check-mark-button.svg
-  proxies: null
-- name: ED 全部故转
-  type: fallback
-  interval: 180
-  lazy: false
-  url: https://www.gstatic.com/generate_204
-  proxies:
-  - ED 全部实测 01
-  - ED 全部实测 02
-  - ED 全部实测 03
-  - ED 全部手选
-  icon: https://api.iconify.design/fluent-emoji-flat/repeat-button.svg
-- name: CC 全部实测
-  type: select
-  include-all: true
-  filter: (?i)(CCUS|(?:^|[ ｜_\-\(\[])(?:CC)(?:$|[ ｜_\-\)\]]))
-  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
-- name: CC 全部实测 01
-  type: select
-  include-all: true
-  filter: (?i)(CCUS|(?:^|[ ｜_\-\(\[])(?:CC)(?:$|[ ｜_\-\)\]]))
-  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
-- name: CC 全部实测 02
-  type: select
-  include-all: true
-  filter: (?i)(CCUS|(?:^|[ ｜_\-\(\[])(?:CC)(?:$|[ ｜_\-\)\]]))
-  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
-- name: CC 全部实测 03
-  type: select
-  include-all: true
-  filter: (?i)(CCUS|(?:^|[ ｜_\-\(\[])(?:CC)(?:$|[ ｜_\-\)\]]))
-  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
-- name: CC 全部手选
-  type: select
-  include-all: true
-  filter: (?i)(CCUS|(?:^|[ ｜_\-\(\[])(?:CC)(?:$|[ ｜_\-\)\]]))
-  icon: https://api.iconify.design/fluent-emoji-flat/check-mark-button.svg
-  proxies: null
-- name: CC 全部故转
-  type: fallback
-  interval: 180
-  lazy: false
-  url: https://www.gstatic.com/generate_204
-  proxies:
-  - CC 全部实测 01
-  - CC 全部实测 02
-  - CC 全部实测 03
-  - CC 全部手选
-  icon: https://api.iconify.design/fluent-emoji-flat/repeat-button.svg
-- name: 香港实测
-  type: select
-  include-all: true
-  filter: (?i)(香港|HK|Hong Kong)
-  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
-- name: 香港实测 01
-  type: select
-  include-all: true
-  filter: (?i)(香港|HK|Hong Kong)
-  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
-- name: 香港实测 02
-  type: select
-  include-all: true
-  filter: (?i)(香港|HK|Hong Kong)
-  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
-- name: 香港实测 03
-  type: select
-  include-all: true
-  filter: (?i)(香港|HK|Hong Kong)
-  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
+  filter: (?i)(BW-自建|自建)
+  icon: https://api.iconify.design/fluent-emoji-flat/locked-with-key.svg
 - name: 香港手选
   type: select
   include-all: true
   filter: (?i)(香港|HKG|Hong Kong|HongKong|移动-HKG|广港|(?:^|[ ｜_\-\(\[])(?:HK)(?:$|[ ｜_\-\)\]]))
   icon: https://api.iconify.design/circle-flags/hk.svg
-  proxies: null
-- name: 香港故转
-  type: fallback
-  interval: 180
-  lazy: false
-  url: https://www.gstatic.com/generate_204
-  proxies:
-  - 香港实测 01
-  - 香港实测 02
-  - 香港实测 03
-  - 香港手选
-  icon: https://api.iconify.design/fluent-emoji-flat/repeat-button.svg
-- name: 新加坡实测
-  type: select
-  include-all: true
-  filter: (?i)(新加坡|SG|Singapore)
-  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
-- name: 新加坡实测 01
-  type: select
-  include-all: true
-  filter: (?i)(新加坡|SG|Singapore)
-  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
-- name: 新加坡实测 02
-  type: select
-  include-all: true
-  filter: (?i)(新加坡|SG|Singapore)
-  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
-- name: 新加坡实测 03
-  type: select
-  include-all: true
-  filter: (?i)(新加坡|SG|Singapore)
-  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
 - name: 新加坡手选
   type: select
   include-all: true
-  filter: (?i)(新加坡|SIN|Singapore|电信-SIN|狮城|广新|(?:^|[ ｜_\-\(\[])(?:SG)(?:$|[ ｜_\-\)\]]))
+  filter: (?i)(新加坡|Singapore|SIN|狮城|(?:^|[ ｜_\-\(\[])(?:SG)(?:$|[ ｜_\-\)\]]))
   icon: https://api.iconify.design/circle-flags/sg.svg
-  proxies: null
-- name: 新加坡故转
-  type: fallback
-  interval: 180
-  lazy: false
-  url: https://www.gstatic.com/generate_204
-  proxies:
-  - 新加坡实测 01
-  - 新加坡实测 02
-  - 新加坡实测 03
-  - 新加坡手选
-  icon: https://api.iconify.design/fluent-emoji-flat/repeat-button.svg
-- name: 日本实测
-  type: select
-  include-all: true
-  filter: (?i)(日本|JP|Japan|Tokyo)
-  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
-- name: 日本实测 01
-  type: select
-  include-all: true
-  filter: (?i)(日本|JP|Japan|Tokyo)
-  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
-- name: 日本实测 02
-  type: select
-  include-all: true
-  filter: (?i)(日本|JP|Japan|Tokyo)
-  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
-- name: 日本实测 03
-  type: select
-  include-all: true
-  filter: (?i)(日本|JP|Japan|Tokyo)
-  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
 - name: 日本手选
   type: select
   include-all: true
-  filter: (?i)(日本|JP|JPN|NRT|Tokyo|Japan|大阪|东京|東京)
+  filter: (?i)(日本|Japan|Tokyo|NRT|KIX|东京|大阪|(?:^|[ ｜_\-\(\[])(?:JP)(?:$|[ ｜_\-\)\]]))
   icon: https://api.iconify.design/circle-flags/jp.svg
-  proxies: null
-- name: 日本故转
-  type: fallback
-  interval: 180
-  lazy: false
-  url: https://www.gstatic.com/generate_204
-  proxies:
-  - 日本实测 01
-  - 日本实测 02
-  - 日本实测 03
-  - 日本手选
-  icon: https://api.iconify.design/fluent-emoji-flat/repeat-button.svg
-- name: 台湾实测
-  type: select
-  include-all: true
-  filter: (?i)(台湾|台灣|TW|Taiwan)
-  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
-- name: 台湾实测 01
-  type: select
-  include-all: true
-  filter: (?i)(台湾|台灣|TW|Taiwan)
-  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
-- name: 台湾实测 02
-  type: select
-  include-all: true
-  filter: (?i)(台湾|台灣|TW|Taiwan)
-  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
-- name: 台湾实测 03
-  type: select
-  include-all: true
-  filter: (?i)(台湾|台灣|TW|Taiwan)
-  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
 - name: 台湾手选
   type: select
   include-all: true
-  filter: (?i)(台湾|台灣|TW|TWN|TPE|Taiwan|台北|臺北)
+  filter: (?i)(台湾|Taiwan|Taipei|TPE|台北|(?:^|[ ｜_\-\(\[])(?:TW)(?:$|[ ｜_\-\)\]]))
   icon: https://api.iconify.design/circle-flags/tw.svg
-  proxies: null
-- name: 台湾故转
-  type: fallback
-  interval: 180
-  lazy: false
-  url: https://www.gstatic.com/generate_204
-  proxies:
-  - 台湾实测 01
-  - 台湾实测 02
-  - 台湾实测 03
-  - 台湾手选
-  icon: https://api.iconify.design/fluent-emoji-flat/repeat-button.svg
-- name: 美国实测
-  type: select
-  include-all: true
-  filter: (?i)(美国|US|United States|LAX|SJC)
-  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
-- name: 美国实测 01
-  type: select
-  include-all: true
-  filter: (?i)(美国|US|United States|LAX|SJC)
-  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
-- name: 美国实测 02
-  type: select
-  include-all: true
-  filter: (?i)(美国|US|United States|LAX|SJC)
-  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
-- name: 美国实测 03
-  type: select
-  include-all: true
-  filter: (?i)(美国|US|United States|LAX|SJC)
-  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
 - name: 美国手选
   type: select
   include-all: true
-  filter: (?i)^(?!.*BW-自建)(?=.*(CCUS|EDUS|广美|(?:^|[ ｜_\-\(\[])(?:US)(?:$|[ ｜_\-\)\]])|\.us-|美国|United States|LAX|SJC|联通-LAX|联通-SJC|纽约|洛杉|圣何塞|西雅|芝加|xirancdn\.us)).*$
+  filter: (?i)(美国|United States|USA|US|Los Angeles|LAX|San Jose|SJC|New York|纽约|洛杉矶|圣何塞|(?:^|[ ｜_\-\(\[])(?:US)(?:$|[ ｜_\-\)\]]))
   icon: https://api.iconify.design/circle-flags/us.svg
-  proxies: null
-- name: 美国故转
-  type: fallback
-  interval: 180
-  lazy: false
-  url: https://www.gstatic.com/generate_204
-  proxies:
-  - 美国实测 01
-  - 美国实测 02
-  - 美国实测 03
-  - 美国手选
-  icon: https://api.iconify.design/fluent-emoji-flat/repeat-button.svg
-- name: 全部实测
+- name: 普通自动 01
   type: select
   include-all: true
   filter: ^((?!(直连|拒绝|COMPATIBLE|PASS|REJECT|REJECT-DROP|BW-自建|自建)).)*$
-  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
-- name: 全部实测 01
+  icon: https://api.iconify.design/fluent-emoji-flat/high-voltage.svg
+- name: 普通自动 02
   type: select
   include-all: true
   filter: ^((?!(直连|拒绝|COMPATIBLE|PASS|REJECT|REJECT-DROP|BW-自建|自建)).)*$
-  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
-- name: 全部实测 02
+  icon: https://api.iconify.design/fluent-emoji-flat/high-voltage.svg
+- name: 普通自动 03
   type: select
   include-all: true
   filter: ^((?!(直连|拒绝|COMPATIBLE|PASS|REJECT|REJECT-DROP|BW-自建|自建)).)*$
-  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
-- name: 全部实测 03
+  icon: https://api.iconify.design/fluent-emoji-flat/high-voltage.svg
+- name: 下载自动 01
   type: select
   include-all: true
   filter: ^((?!(直连|拒绝|COMPATIBLE|PASS|REJECT|REJECT-DROP|BW-自建|自建)).)*$
-  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
-- name: 全部手选
+  icon: https://api.iconify.design/fluent-emoji-flat/package.svg
+- name: 下载自动 02
   type: select
   include-all: true
   filter: ^((?!(直连|拒绝|COMPATIBLE|PASS|REJECT|REJECT-DROP|BW-自建|自建)).)*$
-  icon: https://api.iconify.design/fluent-emoji-flat/check-mark-button.svg
-  proxies: null
-- name: 全部故转
-  type: fallback
-  interval: 180
-  lazy: false
-  url: https://www.gstatic.com/generate_204
-  proxies:
-  - 全部实测 01
-  - 全部实测 02
-  - 全部实测 03
-  - 全部手选
-  icon: https://api.iconify.design/fluent-emoji-flat/repeat-button.svg
-- name: 其他兜底
+  icon: https://api.iconify.design/fluent-emoji-flat/package.svg
+- name: 下载自动 03
   type: select
-  proxies:
-  - 全部故转
-  - 全部实测
-  - 全部手选
-  - 自建保留
-  - ED 全部故转
-  - ED 全部实测
-  - ED 全部手选
-  - CC 全部故转
-  - CC 全部实测
-  - CC 全部手选
-  - 香港故转
-  - 新加坡故转
-  - 日本故转
-  - 台湾故转
-  - 美国故转
-  - 大文件下载
-  - 搜索
-  - 直连
-  - 拒绝
-  icon: https://api.iconify.design/fluent-emoji-flat/compass.svg
+  include-all: true
+  filter: ^((?!(直连|拒绝|COMPATIBLE|PASS|REJECT|REJECT-DROP|BW-自建|自建)).)*$
+  icon: https://api.iconify.design/fluent-emoji-flat/package.svg
 - name: 直连
   type: select
   proxies:
   - DIRECT
-  icon: https://api.iconify.design/fluent-emoji-flat/high-voltage.svg
+  icon: https://api.iconify.design/fluent-emoji-flat/check-mark-button.svg
 - name: 拒绝
   type: select
   proxies:
