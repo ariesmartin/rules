@@ -533,6 +533,10 @@ proxy-groups:
   icon: https://api.iconify.design/logos/steam.svg
 - type: select
   proxies:
+  - 大文件下载
+  - 下载故转
+  - 下载实测
+  - 下载手选
   - 全部故转
   - 全部实测
   - 全部手选
