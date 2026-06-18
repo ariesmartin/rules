@@ -88,6 +88,8 @@ proxy-groups:
   type: select
   proxies:
   - 🔒 自建保留
+  - 🔷 ED 全部故转
+  - 🔶 CC 全部故转
   - 直连
   - 📦 大文件下载
   - ✨ 全部智选
@@ -105,6 +107,8 @@ proxy-groups:
   type: select
   proxies:
   - 🔒 自建保留
+  - 🔷 ED 全部故转
+  - 🔶 CC 全部故转
   - 🔁 全部故转
   - 🇭🇰 香港故转
   - 🇸🇬 新加坡故转
@@ -125,16 +129,71 @@ proxy-groups:
   interval: 180
   lazy: false
   proxies:
-  - 🇭🇰 香港故转
-  - 🇸🇬 新加坡故转
-  - 🇯🇵 日本故转
-  - 🇹🇼 台湾故转
-  - 🇺🇸 美国故转
+  - 🔷 ED 全部故转
+  - 🔶 CC 全部故转
   icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Failover.png
+- name: 🔷 ED 全部故转
+  type: fallback
+  interval: 180
+  lazy: false
+  proxies:
+  - 🔷 ED 全部手选
+  - 🔷 ED 全部智选
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Failover.png
+- name: 🔷 ED 全部手选
+  type: select
+  include-all: true
+  filter: (?i)(EDHK|EDUS)
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Server.png
+- name: 🔷 ED 全部智选
+  type: smart
+  include-all: true
+  policy-priority: .*EDUS.*:0.75;.*EDHK.*:0.8
+  uselightgbm: true
+  collectdata: true
+  health-check:
+    enable: true
+    url: https://www.gstatic.com/generate_204
+    interval: 60
+    tolerance: 2
+  strategy: sticky-sessions
+  interval: 180
+  filter: (?i)(EDHK|EDUS)
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Auto_Link.png
+- name: 🔶 CC 全部故转
+  type: fallback
+  interval: 180
+  lazy: false
+  proxies:
+  - 🔶 CC 全部手选
+  - 🔶 CC 全部智选
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Failover.png
+- name: 🔶 CC 全部手选
+  type: select
+  include-all: true
+  filter: (?i)(CCUS|(?:^|[ ｜_\-\(\[])(?:CC)(?:$|[ ｜_\-\)\]]))
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Server.png
+- name: 🔶 CC 全部智选
+  type: smart
+  include-all: true
+  policy-priority: .*CCUS.*:1.0;.*CC.*:1.1
+  uselightgbm: true
+  collectdata: true
+  health-check:
+    enable: true
+    url: https://www.gstatic.com/generate_204
+    interval: 60
+    tolerance: 2
+  strategy: sticky-sessions
+  interval: 180
+  filter: (?i)(CCUS|(?:^|[ ｜_\-\(\[])(?:CC)(?:$|[ ｜_\-\)\]]))
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Auto_Link.png
 - name: 🧭 其他兜底
   type: select
   proxies:
   - 🔒 自建保留
+  - 🔷 ED 全部故转
+  - 🔶 CC 全部故转
   - 🔁 全部故转
   - 🇭🇰 香港故转
   - 🇸🇬 新加坡故转
@@ -153,6 +212,8 @@ proxy-groups:
   type: select
   proxies:
   - 🔒 自建保留
+  - 🔷 ED 全部故转
+  - 🔶 CC 全部故转
   - 🔁 全部故转
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
@@ -167,6 +228,8 @@ proxy-groups:
   type: select
   proxies:
   - 🔒 自建保留
+  - 🔷 ED 全部故转
+  - 🔶 CC 全部故转
   - 🇺🇸 美国故转
   - 🇭🇰 香港故转
   - 🔎 搜索
@@ -177,6 +240,8 @@ proxy-groups:
   type: select
   proxies:
   - 🔒 自建保留
+  - 🔷 ED 全部故转
+  - 🔶 CC 全部故转
   - 🇺🇸 美国故转
   - 🇸🇬 新加坡故转
   - 🇭🇰 香港故转
@@ -192,6 +257,8 @@ proxy-groups:
   type: select
   proxies:
   - 🔒 自建保留
+  - 🔷 ED 全部故转
+  - 🔶 CC 全部故转
   - 🇺🇸 美国故转
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
@@ -209,6 +276,8 @@ proxy-groups:
   type: select
   proxies:
   - 🔒 自建保留
+  - 🔷 ED 全部故转
+  - 🔶 CC 全部故转
   - 🇺🇸 美国故转
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
@@ -224,6 +293,8 @@ proxy-groups:
 - type: select
   proxies:
   - 🔒 自建保留
+  - 🔷 ED 全部故转
+  - 🔶 CC 全部故转
   - 🇭🇰 香港故转
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
@@ -243,6 +314,8 @@ proxy-groups:
 - type: select
   proxies:
   - 🔒 自建保留
+  - 🔷 ED 全部故转
+  - 🔶 CC 全部故转
   - 🇭🇰 香港故转
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
@@ -263,6 +336,8 @@ proxy-groups:
   type: select
   proxies:
   - 🔒 自建保留
+  - 🔷 ED 全部故转
+  - 🔶 CC 全部故转
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
   - 🇹🇼 台湾故转
@@ -281,6 +356,8 @@ proxy-groups:
   url: https://github.com
   proxies:
   - 🔒 自建保留
+  - 🔷 ED 全部故转
+  - 🔶 CC 全部故转
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
   - 🇹🇼 台湾故转
@@ -292,6 +369,8 @@ proxy-groups:
   type: select
   proxies:
   - 🔒 自建保留
+  - 🔷 ED 全部故转
+  - 🔶 CC 全部故转
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
   - 🇹🇼 台湾故转
@@ -308,6 +387,8 @@ proxy-groups:
   type: select
   proxies:
   - 🔒 自建保留
+  - 🔷 ED 全部故转
+  - 🔶 CC 全部故转
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
   - 🇹🇼 台湾故转
@@ -324,6 +405,8 @@ proxy-groups:
   type: select
   proxies:
   - 🔒 自建保留
+  - 🔷 ED 全部故转
+  - 🔶 CC 全部故转
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
   - 🇹🇼 台湾故转
@@ -340,6 +423,8 @@ proxy-groups:
   type: select
   proxies:
   - 🔒 自建保留
+  - 🔷 ED 全部故转
+  - 🔶 CC 全部故转
   - 🔁 全部故转
   - 🇭🇰 香港故转
   - 🇸🇬 新加坡故转
@@ -354,6 +439,8 @@ proxy-groups:
   type: select
   proxies:
   - 🔒 自建保留
+  - 🔷 ED 全部故转
+  - 🔶 CC 全部故转
   - 🔁 全部故转
   - 🇭🇰 香港故转
   - 🇸🇬 新加坡故转
@@ -368,6 +455,8 @@ proxy-groups:
   type: select
   proxies:
   - 🔒 自建保留
+  - 🔷 ED 全部故转
+  - 🔶 CC 全部故转
   - 🔁 全部故转
   - 🇭🇰 香港故转
   - 🇸🇬 新加坡故转
@@ -381,6 +470,8 @@ proxy-groups:
 - type: select
   proxies:
   - 🔒 自建保留
+  - 🔷 ED 全部故转
+  - 🔶 CC 全部故转
   - 🔁 全部故转
   - 🇭🇰 香港故转
   - 🇸🇬 新加坡故转
@@ -399,6 +490,8 @@ proxy-groups:
 - type: select
   proxies:
   - 🔒 自建保留
+  - 🔷 ED 全部故转
+  - 🔶 CC 全部故转
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
   - 🇹🇼 台湾故转
@@ -418,6 +511,8 @@ proxy-groups:
 - type: select
   proxies:
   - 🔒 自建保留
+  - 🔷 ED 全部故转
+  - 🔶 CC 全部故转
   - 🔁 全部故转
   - 🇭🇰 香港故转
   - 🇸🇬 新加坡故转
@@ -436,6 +531,8 @@ proxy-groups:
 - type: select
   proxies:
   - 🔒 自建保留
+  - 🔷 ED 全部故转
+  - 🔶 CC 全部故转
   - 🔁 全部故转
   - 🇭🇰 香港故转
   - 🇸🇬 新加坡故转
@@ -455,6 +552,8 @@ proxy-groups:
   type: select
   proxies:
   - 🔒 自建保留
+  - 🔷 ED 全部故转
+  - 🔶 CC 全部故转
   - 📦 大文件下载
   - 🇭🇰 香港故转
   - 🇸🇬 新加坡故转
@@ -469,6 +568,8 @@ proxy-groups:
 - type: select
   proxies:
   - 🔒 自建保留
+  - 🔷 ED 全部故转
+  - 🔶 CC 全部故转
   - 🔁 全部故转
   - 🇭🇰 香港故转
   - 🇸🇬 新加坡故转
@@ -486,6 +587,8 @@ proxy-groups:
 - type: select
   proxies:
   - 🔒 自建保留
+  - 🔷 ED 全部故转
+  - 🔶 CC 全部故转
   - 🔁 全部故转
   - 🇭🇰 香港故转
   - 🇸🇬 新加坡故转
@@ -664,6 +767,8 @@ proxy-groups:
 - type: select
   proxies:
   - 🔒 自建保留
+  - 🔷 ED 全部故转
+  - 🔶 CC 全部故转
   - 直连
   - ✨ 全部智选
   - 🧰 全部手选
