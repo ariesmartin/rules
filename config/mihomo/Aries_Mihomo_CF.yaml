@@ -1,242 +1,1202 @@
-# Aries Mihomo / OpenClash native configuration.
-# This file intentionally uses native rule-providers with format: mrs.
-# Node subscriptions are pulled from the local LXC aggregator, so no EDHK/EDUS
-# tokens are stored in this public repository.
-
 proxy-providers:
   NodeBench-Edge:
     type: http
-    url: "http://192.168.2.60:8080/EDGE"
-    interval: 600
-    proxy: 直连
+    url: http://192.168.2.60:8080/EDGE
+    interval: 3600
     health-check:
       enable: true
-      url: "https://www.gstatic.com/generate_204"
+      url: https://www.gstatic.com/generate_204
       interval: 180
-      timeout: 5000
-      lazy: true
-
+    proxy: 直连
 proxies:
-  - {name: 直连, type: direct}
-  - {name: 拒绝, type: reject}
-
-mixed-port: 7893
+- name: 直连
+  type: direct
+- name: 拒绝
+  type: reject
+port: 7890
+socks-port: 7891
 redir-port: 7892
+mixed-port: 7893
 tproxy-port: 7895
 allow-lan: true
-bind-address: "*"
 mode: rule
 log-level: info
-ipv6: false
-unified-delay: true
-tcp-concurrent: true
-keep-alive-idle: 600
-keep-alive-interval: 15
-
-profile:
-  store-selected: true
-  store-fake-ip: true
-
-sniffer:
-  enable: true
-  sniff:
-    HTTP:
-      ports: [80, 8080-8880]
-      override-destination: true
-    TLS:
-      ports: [443, 8443]
-    QUIC:
-      ports: [443, 8443]
-  skip-domain:
-    - "Mijia Cloud"
-    - "+.push.apple.com"
-
-tun:
-  enable: true
-  stack: gvisor
-  dns-hijack: ["any:53", "tcp://any:53"]
-  auto-route: false
-  auto-redirect: false
-  auto-detect-interface: false
-  strict-route: false
-
 dns:
   enable: true
   listen: 0.0.0.0:7874
-  ipv6: false
-  respect-rules: true
+  ipv6: true
   enhanced-mode: fake-ip
   fake-ip-range: 198.20.0.1/16
+  nameserver:
+  - 223.5.5.5
+  - 119.29.29.29
+  - 202.106.195.68
+  - 202.106.46.151
   fake-ip-filter-mode: blacklist
   fake-ip-filter:
-    - "rule-set:fakeipfilter_domain"
-    - "+.lan"
-    - "+.local"
-    - "+.push.apple.com"
-    - "time.*.com"
-  default-nameserver:
-    - 223.5.5.5
-    - 119.29.29.29
-  proxy-server-nameserver:
-    - https://dns.alidns.com/dns-query
-    - https://doh.pub/dns-query
-  nameserver:
-    - https://dns.alidns.com/dns-query
-    - https://doh.pub/dns-query
-
+  - +.lan
+  - +.local
+  - geosite:cn
+  - +.km688.ink
+  - +.onesubv.site
+  - +.oneyyds.online
+  - +.fengyyds.site
+  - +.onemg.top
+  - +.chybinc.com
+  - +.invitevp.com
+  - +.vp2.us
+  - +.xiaoniuyun.cc
+  - +.apple-bing.sbs
+  - +.bncrcloud.com
+  - +.xby01.xyz
+  - +.idsduf.com
+  - +.66jc.top
+  - +.gfw.gg
+  - +.moedog.cloud
+  - +.ynhtbank.com
+  - +.qeayr.cn
+  - +.saojc.xyz
+  - +.sssyun.xyz
+  - +.dler.cloud
+  - +.0tk8a3a1q4t94dler.com
+  - +.aerianas.top
+  - +.gptacg.top
+  - +.wxda.net
+ipv6: false
+tun:
+  enable: true
+  stack: gvisor
+  device: utun
+  endpoint-independent-nat: true
+  auto-route: false
+  auto-detect-interface: false
+  auto-redirect: false
+  strict-route: false
+profile:
+  store-selected: true
+  store-fake-ip: true
 proxy-groups:
-  - {name: 🌍 默认代理, type: select, proxies: [🌐 视频优选, ⬇️ 下载稳定, 🇸🇬 新加坡故转, 🇯🇵 日本故转, 🇹🇼 台湾故转, 🇭🇰 香港故转, 🇺🇸 美国故转, ✨ 全部智选, 🧰 全部手选, 直连, 拒绝]}
-  - {name: ⬇️ 下载稳定, type: select, proxies: [⚡ 下载故转, 🇸🇬 新加坡故转, 🇯🇵 日本故转, 🇹🇼 台湾故转, 🇺🇸 美国故转, 🇭🇰 香港故转, ✨ 全部智选, 🧰 全部手选, 直连]}
-  - {name: 📺 YouTube, type: select, proxies: [🌐 视频优选, 🇸🇬 新加坡故转, 🇯🇵 日本故转, 🇹🇼 台湾故转, 🇭🇰 香港故转, 🇺🇸 美国故转, ✨ 全部智选, 🧰 全部手选, 直连]}
-  - {name: 🎶 TikTok, type: select, proxies: [🌐 视频优选, 🇸🇬 新加坡故转, 🇯🇵 日本故转, 🇹🇼 台湾故转, 🇭🇰 香港故转, 🇺🇸 美国故转, ✨ 全部智选, 🧰 全部手选, 直连]}
-  - {name: 🇬 Google 服务, type: select, proxies: [🇺🇸 美国故转, 🇸🇬 新加坡故转, 🇭🇰 香港故转, ⬇️ 下载稳定, 🌐 视频优选, 🧰 全部手选, 直连]}
-  - {name: 🤖 ChatGPT, type: select, proxies: [🇺🇸 美国故转, 🇸🇬 新加坡故转, 🇯🇵 日本故转, 🇭🇰 香港故转, ✨ 全部智选, 🧰 全部手选]}
-  - {name: 🤖 AI 其他, type: select, proxies: [🇺🇸 美国故转, 🇸🇬 新加坡故转, 🇯🇵 日本故转, 🇭🇰 香港故转, ✨ 全部智选, 🧰 全部手选]}
-  - {name: 🎮 游戏服务, type: select, proxies: [🎮 游戏稳定, 🇺🇸 美国故转, 🇯🇵 日本故转, 🇸🇬 新加坡故转, 🇭🇰 香港故转, 🧰 全部手选, 直连]}
-  - {name: 🎮 Steam 下载, type: select, proxies: [直连, ⬇️ 下载稳定, 🎮 游戏稳定, 🇺🇸 美国故转, 🇯🇵 日本故转, 🇸🇬 新加坡故转, 🧰 全部手选]}
-  - {name: 🎬 流媒体, type: select, proxies: [🌐 视频优选, 📺 YouTube, 🇸🇬 新加坡故转, 🇯🇵 日本故转, 🇹🇼 台湾故转, 🇭🇰 香港故转, 🇺🇸 美国故转, ✨ 全部智选, 🧰 全部手选]}
-  - {name: 🍎 Apple, type: select, proxies: [直连, 🌍 默认代理, 🇭🇰 香港故转, 🇺🇸 美国故转, 🧰 全部手选]}
-  - {name: 🪟 Microsoft, type: select, proxies: [直连, ⬇️ 下载稳定, 🌍 默认代理, 🇺🇸 美国故转, 🧰 全部手选]}
-  - {name: ₿ 加密金融, type: select, proxies: [🇭🇰 香港故转, 🇺🇸 美国故转, 🇸🇬 新加坡故转, 🌍 默认代理, 🧰 全部手选]}
-  - {name: 🧭 其他兜底, type: select, proxies: [🌍 默认代理, 🌐 视频优选, ⬇️ 下载稳定, 🇸🇬 新加坡故转, 🇭🇰 香港故转, 🇺🇸 美国故转, 直连, 拒绝, 🧰 全部手选]}
-
-  - {name: ⚡ 下载故转, type: fallback, proxies: [🇸🇬 新加坡故转, 🇯🇵 日本故转, 🇹🇼 台湾故转, 🇺🇸 美国故转, 🇭🇰 香港故转], url: "https://github.com", interval: 180, timeout: 5000, lazy: false}
-  - {name: 🌐 视频优选, type: url-test, use: [NodeBench-Edge], filter: "^(?!.*(直连|拒绝)).*$", url: "https://www.gstatic.com/generate_204", interval: 240, tolerance: 80, timeout: 5000}
-  - {name: 🎮 游戏稳定, type: fallback, proxies: [🇺🇸 美国故转, 🇯🇵 日本故转, 🇸🇬 新加坡故转, 🇭🇰 香港故转, 🇹🇼 台湾故转], url: "https://www.gstatic.com/generate_204", interval: 180, timeout: 5000, lazy: false}
-  - {name: ✨ 全部智选, type: url-test, use: [NodeBench-Edge], filter: "^(?!.*(直连|拒绝)).*$", url: "https://www.gstatic.com/generate_204", interval: 300, tolerance: 100, timeout: 5000}
-  - {name: 🧰 全部手选, type: select, use: [NodeBench-Edge], proxies: [直连, 拒绝]}
-
-  - {name: 🇭🇰 香港故转, type: fallback, proxies: [🇭🇰 ED香港故转, 🇭🇰 CC香港故转], url: "https://www.gstatic.com/generate_204", interval: 180, timeout: 5000, lazy: false}
-  - {name: 🇸🇬 新加坡故转, type: fallback, proxies: [🇸🇬 ED新加坡故转, 🇸🇬 CC新加坡故转], url: "https://www.gstatic.com/generate_204", interval: 180, timeout: 5000, lazy: false}
-  - {name: 🇯🇵 日本故转, type: fallback, proxies: [🇯🇵 ED日本故转, 🇯🇵 CC日本故转], url: "https://www.gstatic.com/generate_204", interval: 180, timeout: 5000, lazy: false}
-  - {name: 🇹🇼 台湾故转, type: fallback, proxies: [🇹🇼 ED台湾故转, 🇹🇼 CC台湾故转], url: "https://www.gstatic.com/generate_204", interval: 180, timeout: 5000, lazy: false}
-  - {name: 🇺🇸 美国故转, type: fallback, proxies: [🇺🇸 ED美国故转, 🇺🇸 CC美国故转], url: "https://www.gstatic.com/generate_204", interval: 180, timeout: 5000, lazy: false}
-
-  - {name: 🇭🇰 ED香港故转, type: fallback, use: [NodeBench-Edge], filter: "(?=.*EDHK)(?=.*(香港|港|HK|Hong Kong|HongKong)).*", url: "https://www.gstatic.com/generate_204", interval: 180, timeout: 5000}
-  - {name: 🇸🇬 ED新加坡故转, type: fallback, use: [NodeBench-Edge], filter: "(?=.*EDHK)(?=.*(新加坡|狮城|SG|Singapore)).*", url: "https://www.gstatic.com/generate_204", interval: 180, timeout: 5000}
-  - {name: 🇯🇵 ED日本故转, type: fallback, use: [NodeBench-Edge], filter: "(?=.*EDHK)(?=.*(日本|东京|大阪|JP|Japan)).*", url: "https://www.gstatic.com/generate_204", interval: 180, timeout: 5000}
-  - {name: 🇹🇼 ED台湾故转, type: fallback, use: [NodeBench-Edge], filter: "(?=.*EDHK)(?=.*(台湾|台灣|台北|TW|Taiwan)).*", url: "https://www.gstatic.com/generate_204", interval: 180, timeout: 5000}
-  - {name: 🇺🇸 ED美国故转, type: fallback, use: [NodeBench-Edge], filter: "(?=.*EDUS)(?=.*(美国|美|US|United States|UnitedStates)).*", url: "https://www.gstatic.com/generate_204", interval: 180, timeout: 5000}
-
-  - {name: 🇭🇰 CC香港故转, type: fallback, use: [NodeBench-Edge], filter: "^(?!.*EDHK)(?=.*CC)(?=.*(香港|港|HK|Hong Kong|HongKong)).*", url: "https://www.gstatic.com/generate_204", interval: 180, timeout: 5000}
-  - {name: 🇸🇬 CC新加坡故转, type: fallback, use: [NodeBench-Edge], filter: "^(?!.*EDHK)(?=.*CC)(?=.*(新加坡|狮城|SG|Singapore)).*", url: "https://www.gstatic.com/generate_204", interval: 180, timeout: 5000}
-  - {name: 🇯🇵 CC日本故转, type: fallback, use: [NodeBench-Edge], filter: "^(?!.*EDHK)(?=.*CC)(?=.*(日本|东京|大阪|JP|Japan)).*", url: "https://www.gstatic.com/generate_204", interval: 180, timeout: 5000}
-  - {name: 🇹🇼 CC台湾故转, type: fallback, use: [NodeBench-Edge], filter: "^(?!.*EDHK)(?=.*CC)(?=.*(台湾|台灣|台北|TW|Taiwan)).*", url: "https://www.gstatic.com/generate_204", interval: 180, timeout: 5000}
-  - {name: 🇺🇸 CC美国故转, type: fallback, use: [NodeBench-Edge], filter: "^(?!.*EDUS)(?=.*CCUS)(?=.*(美国|美|US|United States|UnitedStates)).*", url: "https://www.gstatic.com/generate_204", interval: 180, timeout: 5000}
-
-  - {name: 🇭🇰 香港手选, type: select, use: [NodeBench-Edge], filter: "(香港|港|HK|Hong Kong|HongKong)"}
-  - {name: 🇸🇬 新加坡手选, type: select, use: [NodeBench-Edge], filter: "(新加坡|狮城|SG|Singapore)"}
-  - {name: 🇯🇵 日本手选, type: select, use: [NodeBench-Edge], filter: "(日本|东京|大阪|JP|Japan)"}
-  - {name: 🇹🇼 台湾手选, type: select, use: [NodeBench-Edge], filter: "(台湾|台灣|台北|TW|Taiwan)"}
-  - {name: 🇺🇸 美国手选, type: select, use: [NodeBench-Edge], filter: "(美国|美|US|United States|UnitedStates)"}
-
+- name: 🇨🇳 国内直连
+  type: select
+  proxies:
+  - 直连
+  - 📦 大文件下载
+  - ✨ 全部智选
+  - 🧰 全部手选
+  - 🇭🇰 香港智选
+  - 🇭🇰 香港故转
+  - 🇸🇬 新加坡故转
+  - 🇯🇵 日本故转
+  - 🇹🇼 台湾故转
+  - 🇺🇸 美国故转
+  - 🧭 其他故转
+  - 🛑 拦截
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/DIRECT.png
+- name: 🌍 国外默认
+  type: select
+  proxies:
+  - 🇭🇰 香港故转
+  - 🇸🇬 新加坡故转
+  - 🇯🇵 日本故转
+  - 🇹🇼 台湾故转
+  - 🇺🇸 美国故转
+  - 🧭 其他故转
+  - ⬇️ 下载手选
+  - 直连
+  - 🛑 拦截
+  - 🔎 搜索
+  - 📦 大文件下载
+  - ✨ 全部智选
+  - 🧰 全部手选
+  - 🇭🇰 香港智选
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Global.png
+- name: 🧭 其他兜底
+  type: select
+  proxies:
+  - 🇭🇰 香港故转
+  - 🇸🇬 新加坡故转
+  - 🇯🇵 日本故转
+  - 🇹🇼 台湾故转
+  - 🇺🇸 美国故转
+  - 🧭 其他故转
+  - ⬇️ 下载手选
+  - 直连
+  - 🛑 拦截
+  - 🔎 搜索
+  - 📦 大文件下载
+  - ✨ 全部智选
+  - 🧰 全部手选
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Other.png
+- name: 🔎 搜索
+  type: select
+  proxies:
+  - 🇸🇬 新加坡故转
+  - 🇯🇵 日本故转
+  - 🇹🇼 台湾故转
+  - 🇺🇸 美国故转
+  - 🇭🇰 香港故转
+  - 🧭 其他故转
+  - 直连
+  - 🛑 拦截
+  - 🧰 全部手选
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Global.png
+- name: 🔎 Google 搜索
+  type: select
+  proxies:
+  - 🇺🇸 美国故转
+  - 🇭🇰 香港故转
+  - 🔎 搜索
+  - 🧰 全部手选
+  - 🛑 拦截
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Google.png
+- name: 🇬 Google 服务
+  type: select
+  proxies:
+  - 🇺🇸 美国故转
+  - 🇸🇬 新加坡故转
+  - 🇭🇰 香港故转
+  - 🇯🇵 日本故转
+  - 🇹🇼 台湾故转
+  - 📦 大文件下载
+  - 🔎 Google 搜索
+  - 🧰 全部手选
+  - 直连
+  - 🛑 拦截
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Google.png
+- name: 🤖 AI 总入口
+  type: select
+  proxies:
+  - 🇺🇸 美国故转
+  - 🇸🇬 新加坡故转
+  - 🇯🇵 日本故转
+  - 🇹🇼 台湾故转
+  - 🇭🇰 香港故转
+  - 🧭 其他故转
+  - 直连
+  - 🛑 拦截
+  - 🔎 搜索
+  - ✨ 全部智选
+  - 🧰 全部手选
+  - 🇭🇰 香港智选
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/AI.png
+- name: 🤖 ChatGPT
+  type: select
+  proxies:
+  - 🇺🇸 美国故转
+  - 🇸🇬 新加坡故转
+  - 🇯🇵 日本故转
+  - 🇹🇼 台湾故转
+  - 🇭🇰 香港故转
+  - 🤖 AI 总入口
+  - 🔎 搜索
+  - ✨ 全部智选
+  - 🧰 全部手选
+  - 直连
+  - 🛑 拦截
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/ChatGPT.png
+- type: select
+  proxies:
+  - 🇭🇰 香港故转
+  - 🇸🇬 新加坡故转
+  - 🇯🇵 日本故转
+  - 🇹🇼 台湾故转
+  - 🇺🇸 美国故转
+  - 🧭 其他故转
+  - 直连
+  - 🛑 拦截
+  - 🤖 AI 总入口
+  - 🔎 搜索
+  - ✨ 全部智选
+  - 🧰 全部手选
+  - 🇭🇰 香港智选
+  - 拒绝
+  name: 🤖 Meta AI
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/AI_bot.png
+- type: select
+  proxies:
+  - 🇭🇰 香港故转
+  - 🇸🇬 新加坡故转
+  - 🇯🇵 日本故转
+  - 🇹🇼 台湾故转
+  - 🇺🇸 美国故转
+  - 🧭 其他故转
+  - 直连
+  - 🛑 拦截
+  - 🤖 AI 总入口
+  - 🔎 搜索
+  - ✨ 全部智选
+  - 🧰 全部手选
+  - 🇭🇰 香港智选
+  - 拒绝
+  name: 🤖 Perplexity
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/AI.png
+- name: ⬇️ 下载手选
+  type: select
+  proxies:
+  - 🇸🇬 新加坡故转
+  - 🇯🇵 日本故转
+  - 🇹🇼 台湾故转
+  - 🇺🇸 美国故转
+  - 🇭🇰 香港故转
+  - ⚡ 下载测速
+  - 🧭 其他故转
+  - 🧰 全部手选
+  - 直连
+  - 🛑 拦截
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Download.png
+- name: ⚡ 下载测速
+  type: fallback
+  interval: 180
+  lazy: false
+  url: https://github.com
+  proxies:
+  - 🇸🇬 新加坡故转
+  - 🇯🇵 日本故转
+  - 🇹🇼 台湾故转
+  - 🇺🇸 美国故转
+  - 🇭🇰 香港故转
+  - 🧭 其他故转
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/SpeedTest.png
+- name: 📦 大文件下载
+  type: select
+  proxies:
+  - 🇸🇬 新加坡故转
+  - 🇯🇵 日本故转
+  - 🇹🇼 台湾故转
+  - 🇺🇸 美国故转
+  - 🇭🇰 香港故转
+  - ⚡ 下载测速
+  - 🧭 其他故转
+  - 🧰 全部手选
+  - 直连
+  - 🛑 拦截
+  - ⬇️ 下载手选
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Download_2.png
+- name: 🤗 HuggingFace
+  type: select
+  proxies:
+  - 🇸🇬 新加坡故转
+  - 🇯🇵 日本故转
+  - 🇹🇼 台湾故转
+  - 🇺🇸 美国故转
+  - 🇭🇰 香港故转
+  - ⚡ 下载测速
+  - 🧭 其他故转
+  - 🧰 全部手选
+  - 直连
+  - 🛑 拦截
+  - ⬇️ 下载手选
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Hugging_face.png
+- name: 🐙 GitHub
+  type: select
+  proxies:
+  - 🇸🇬 新加坡故转
+  - 🇯🇵 日本故转
+  - 🇹🇼 台湾故转
+  - 🇺🇸 美国故转
+  - 🇭🇰 香港故转
+  - ⚡ 下载测速
+  - 🧭 其他故转
+  - 🧰 全部手选
+  - 直连
+  - 🛑 拦截
+  - ⬇️ 下载手选
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/GitHub.png
+- name: ▶️ YouTube
+  type: select
+  proxies:
+  - 🇭🇰 香港故转
+  - 🇸🇬 新加坡故转
+  - 🇯🇵 日本故转
+  - 🇹🇼 台湾故转
+  - 🇺🇸 美国故转
+  - 🧭 其他故转
+  - 直连
+  - 🛑 拦截
+  - 🧰 全部手选
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/YouTube.png
+- name: 🎶 TikTok
+  type: select
+  proxies:
+  - 🇭🇰 香港故转
+  - 🇸🇬 新加坡故转
+  - 🇯🇵 日本故转
+  - 🇹🇼 台湾故转
+  - 🇺🇸 美国故转
+  - 🧭 其他故转
+  - 直连
+  - 🛑 拦截
+  - 🧰 全部手选
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/TikTok.png
+- name: 🎬 流媒体
+  type: select
+  proxies:
+  - 🇭🇰 香港故转
+  - 🇸🇬 新加坡故转
+  - 🇯🇵 日本故转
+  - 🇹🇼 台湾故转
+  - 🇺🇸 美国故转
+  - 🧭 其他故转
+  - 直连
+  - 🛑 拦截
+  - 🧰 全部手选
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Stream.png
+- type: select
+  proxies:
+  - 🇭🇰 香港故转
+  - 🇸🇬 新加坡故转
+  - 🇯🇵 日本故转
+  - 🇹🇼 台湾故转
+  - 🇺🇸 美国故转
+  - 🧭 其他故转
+  - 直连
+  - 🛑 拦截
+  - 🔎 搜索
+  - ✨ 全部智选
+  - 🧰 全部手选
+  - 🇭🇰 香港智选
+  - 拒绝
+  name: 💬 Reddit
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Reddit.png
+- type: select
+  proxies:
+  - 🇸🇬 新加坡故转
+  - 🇯🇵 日本故转
+  - 🇹🇼 台湾故转
+  - 🇺🇸 美国故转
+  - 🇭🇰 香港故转
+  - ⚡ 下载测速
+  - 🧭 其他故转
+  - 🧰 全部手选
+  - 直连
+  - 🛑 拦截
+  - 📦 大文件下载
+  - ✨ 全部智选
+  - 🇭🇰 香港智选
+  - 拒绝
+  name: 🟩 NVIDIA
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Game.png
+- type: select
+  proxies:
+  - 🇭🇰 香港故转
+  - 🇸🇬 新加坡故转
+  - 🇯🇵 日本故转
+  - 🇹🇼 台湾故转
+  - 🇺🇸 美国故转
+  - 🧭 其他故转
+  - 直连
+  - 🛑 拦截
+  - 📦 大文件下载
+  - ✨ 全部智选
+  - 🧰 全部手选
+  - 🇭🇰 香港智选
+  - 拒绝
+  name: 🍎 Apple
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Apple.png
+- type: select
+  proxies:
+  - 🇭🇰 香港故转
+  - 🇸🇬 新加坡故转
+  - 🇯🇵 日本故转
+  - 🇹🇼 台湾故转
+  - 🇺🇸 美国故转
+  - 🧭 其他故转
+  - 直连
+  - 🛑 拦截
+  - 📦 大文件下载
+  - ✨ 全部智选
+  - 🧰 全部手选
+  - 🇭🇰 香港智选
+  - 拒绝
+  name: 🪟 Microsoft
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Microsoft.png
+- name: 🎮 Steam 下载
+  type: select
+  proxies:
+  - 📦 大文件下载
+  - 🇭🇰 香港故转
+  - 🇸🇬 新加坡故转
+  - 🇯🇵 日本故转
+  - 🇹🇼 台湾故转
+  - 🇺🇸 美国故转
+  - 🎮 游戏
+  - 直连
+  - 🧰 全部手选
+  - 🛑 拦截
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Steam.png
+- type: select
+  proxies:
+  - 🇭🇰 香港故转
+  - 🇸🇬 新加坡故转
+  - 🇯🇵 日本故转
+  - 🇹🇼 台湾故转
+  - 🇺🇸 美国故转
+  - 🧭 其他故转
+  - 直连
+  - 🛑 拦截
+  - ✨ 全部智选
+  - 🧰 全部手选
+  - 🇭🇰 香港智选
+  - 拒绝
+  name: 🎮 游戏
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Game.png
+- type: select
+  proxies:
+  - 🇭🇰 香港故转
+  - 🇸🇬 新加坡故转
+  - 🇯🇵 日本故转
+  - 🇹🇼 台湾故转
+  - 🇺🇸 美国故转
+  - 🧭 其他故转
+  - 直连
+  - 🛑 拦截
+  - 🔎 搜索
+  - ✨ 全部智选
+  - 🧰 全部手选
+  - 🇭🇰 香港智选
+  - 拒绝
+  name: ₿ 加密金融
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Crypto.png
+- name: 🇭🇰 香港故转
+  type: fallback
+  interval: 180
+  lazy: false
+  proxies:
+  - 🇭🇰 香港手选
+  - 🇭🇰 香港智选
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Failover.png
+- name: 🇭🇰 香港手选
+  type: select
+  include-all: true
+  filter: (?i)(香港|HKG|Hong Kong|HongKong|移动-HKG|广港|(?:^|[ ｜_\-\(\[])(?:HK)(?:$|[ ｜_\-\)\]]))
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Hong_Kong.png
+- name: 🇭🇰 香港智选
+  type: smart
+  include-all: true
+  policy-priority: .*EDHK.*:0.8;.*CC.*:1.2
+  uselightgbm: true
+  collectdata: true
+  health-check:
+    enable: true
+    url: https://www.gstatic.com/generate_204
+    interval: 60
+    tolerance: 2
+  strategy: sticky-sessions
+  interval: 180
+  filter: (?i)(香港|HKG|Hong Kong|HongKong|移动-HKG|广港|(?:^|[ ｜_\-\(\[])(?:HK)(?:$|[ ｜_\-\)\]]))
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Hong_Kong.png
+- name: 🇸🇬 新加坡故转
+  type: fallback
+  interval: 180
+  lazy: false
+  proxies:
+  - 🇸🇬 新加坡手选
+  - 🇸🇬 新加坡智选
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Failover.png
+- name: 🇸🇬 新加坡手选
+  type: select
+  include-all: true
+  filter: (?i)(新加坡|SIN|Singapore|电信-SIN|狮城|广新|(?:^|[ ｜_\-\(\[])(?:SG)(?:$|[ ｜_\-\)\]]))
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Singapore.png
+- name: 🇸🇬 新加坡智选
+  type: smart
+  include-all: true
+  policy-priority: .*EDHK.*:0.8;.*CC.*:1.2
+  uselightgbm: true
+  collectdata: true
+  health-check:
+    enable: true
+    url: https://www.gstatic.com/generate_204
+    interval: 60
+    tolerance: 2
+  strategy: sticky-sessions
+  interval: 180
+  filter: (?i)(新加坡|SIN|Singapore|电信-SIN|狮城|广新|(?:^|[ ｜_\-\(\[])(?:SG)(?:$|[ ｜_\-\)\]]))
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Singapore.png
+- name: 🇯🇵 日本故转
+  type: fallback
+  interval: 180
+  lazy: false
+  proxies:
+  - 🇯🇵 日本手选
+  - 🇯🇵 日本智选
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Failover.png
+- name: 🇯🇵 日本手选
+  type: select
+  include-all: true
+  filter: (?i)(日本|JP|JPN|NRT|Tokyo|Japan|大阪|东京|東京)
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Japan.png
+- name: 🇯🇵 日本智选
+  type: smart
+  include-all: true
+  policy-priority: .*EDHK.*:0.8;.*CC.*:1.2
+  uselightgbm: true
+  collectdata: true
+  health-check:
+    enable: true
+    url: https://www.gstatic.com/generate_204
+    interval: 60
+    tolerance: 2
+  strategy: sticky-sessions
+  interval: 180
+  filter: (?i)(日本|JP|JPN|NRT|Tokyo|Japan|大阪|东京|東京)
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Japan.png
+- name: 🇹🇼 台湾故转
+  type: fallback
+  interval: 180
+  lazy: false
+  proxies:
+  - 🇹🇼 台湾手选
+  - 🇹🇼 台湾智选
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Failover.png
+- name: 🇹🇼 台湾手选
+  type: select
+  include-all: true
+  filter: (?i)(台湾|台灣|TW|TWN|TPE|Taiwan|台北|臺北)
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Taiwan_Province.png
+- name: 🇹🇼 台湾智选
+  type: smart
+  include-all: true
+  policy-priority: .*EDHK.*:0.8;.*CC.*:1.2
+  uselightgbm: true
+  collectdata: true
+  health-check:
+    enable: true
+    url: https://www.gstatic.com/generate_204
+    interval: 60
+    tolerance: 2
+  strategy: sticky-sessions
+  interval: 180
+  filter: (?i)(台湾|台灣|TW|TWN|TPE|Taiwan|台北|臺北)
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Taiwan_Province.png
+- name: 🇺🇸 美国故转
+  type: fallback
+  interval: 180
+  lazy: false
+  proxies:
+  - 🇺🇸 美国手选
+  - 🇺🇸 美国智选
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Failover.png
+- name: 🇺🇸 美国手选
+  type: select
+  include-all: true
+  filter: (?i)^(?!.*BW-自建)(?=.*(CCUS|EDUS|广美|(?:^|[ ｜_\-\(\[])(?:US)(?:$|[ ｜_\-\)\]])|\.us-|美国|United States|LAX|SJC|联通-LAX|联通-SJC|纽约|洛杉|圣何塞|西雅|芝加|xirancdn\.us)).*$
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/USA.png
+- name: 🇺🇸 美国智选
+  type: smart
+  include-all: true
+  policy-priority: .*EDUS.*:0.8;.*CCUS.*:1.2
+  uselightgbm: true
+  collectdata: true
+  health-check:
+    enable: true
+    url: https://www.gstatic.com/generate_204
+    interval: 60
+    tolerance: 2
+  strategy: sticky-sessions
+  interval: 180
+  filter: (?i)^(?!.*BW-自建)(?=.*(CCUS|EDUS|广美|(?:^|[ ｜_\-\(\[])(?:US)(?:$|[ ｜_\-\)\]])|\.us-|美国|United States|LAX|SJC|联通-LAX|联通-SJC|纽约|洛杉|圣何塞|西雅|芝加|xirancdn\.us)).*$
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/USA.png
+- name: 🧭 其他故转
+  type: fallback
+  interval: 180
+  lazy: false
+  proxies:
+  - 🧭 其他手选
+  - 🧭 其他智选
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Failover.png
+- name: 🧭 其他手选
+  type: select
+  include-all: true
+  filter: (?i)^((?!(直连|拒绝|COMPATIBLE|PASS|REJECT|REJECT-DROP|BW-自建|香港|HKG|Hong Kong|HongKong|移动-HKG|广港|(?:^|[ ｜_\-\(\[])(?:HK)(?:$|[ ｜_\-\)\]])|新加坡|SIN|Singapore|电信-SIN|狮城|广新|(?:^|[ ｜_\-\(\[])(?:SG)(?:$|[ ｜_\-\)\]])|日本|JP|JPN|NRT|Tokyo|Japan|大阪|东京|東京|台湾|台灣|TW|TWN|TPE|Taiwan|台北|臺北|CCUS|EDUS|广美|(?:^|[ ｜_\-\(\[])(?:US)(?:$|[ ｜_\-\)\]])|\.us-|美国|United States|LAX|SJC|联通-LAX|联通-SJC|纽约|洛杉|圣何塞|西雅|芝加|xirancdn\.us)).)*$
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Other.png
+- name: 🧭 其他智选
+  type: smart
+  include-all: true
+  policy-priority: .*EDHK.*:0.85;.*CC.*:1.2
+  uselightgbm: true
+  collectdata: true
+  health-check:
+    enable: true
+    url: https://www.gstatic.com/generate_204
+    interval: 60
+    tolerance: 2
+  strategy: sticky-sessions
+  interval: 180
+  filter: (?i)^((?!(直连|拒绝|COMPATIBLE|PASS|REJECT|REJECT-DROP|BW-自建|香港|HKG|Hong Kong|HongKong|移动-HKG|广港|(?:^|[ ｜_\-\(\[])(?:HK)(?:$|[ ｜_\-\)\]])|新加坡|SIN|Singapore|电信-SIN|狮城|广新|(?:^|[ ｜_\-\(\[])(?:SG)(?:$|[ ｜_\-\)\]])|日本|JP|JPN|NRT|Tokyo|Japan|大阪|东京|東京|台湾|台灣|TW|TWN|TPE|Taiwan|台北|臺北|CCUS|EDUS|广美|(?:^|[ ｜_\-\(\[])(?:US)(?:$|[ ｜_\-\)\]])|\.us-|美国|United States|LAX|SJC|联通-LAX|联通-SJC|纽约|洛杉|圣何塞|西雅|芝加|xirancdn\.us)).)*$
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Other.png
+- name: 🧰 全部手选
+  type: select
+  include-all: true
+  filter: ^((?!(直连|拒绝|COMPATIBLE|PASS|REJECT|REJECT-DROP)).)*$
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Server.png
+- name: ✨ 全部智选
+  type: smart
+  include-all: true
+  policy-priority: .*EDUS.*:0.75;.*EDHK.*:0.8;.*CCUS.*:1.15;.*CC.*:1.2
+  uselightgbm: true
+  collectdata: true
+  health-check:
+    enable: true
+    url: https://www.gstatic.com/generate_204
+    interval: 60
+    tolerance: 2
+  strategy: sticky-sessions
+  interval: 180
+  filter: ^((?!(直连|拒绝|COMPATIBLE|PASS|REJECT|REJECT-DROP)).)*$
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Auto_Link.png
+- type: select
+  proxies:
+  - 直连
+  - ✨ 全部智选
+  - 🧰 全部手选
+  - 🇭🇰 香港智选
+  - 🇭🇰 香港故转
+  - 🇸🇬 新加坡故转
+  - 🇯🇵 日本故转
+  - 🇹🇼 台湾故转
+  - 🇺🇸 美国故转
+  - 🧭 其他故转
+  - 拒绝
+  name: 🧪 测试
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/SpeedTest.png
+- type: select
+  proxies:
+  - 拒绝
+  - 直连
+  - ✨ 全部智选
+  - 🧰 全部手选
+  - 🇭🇰 香港智选
+  - 🇭🇰 香港故转
+  - 🇸🇬 新加坡故转
+  - 🇯🇵 日本故转
+  - 🇹🇼 台湾故转
+  - 🇺🇸 美国故转
+  - 🧭 其他故转
+  name: 🛑 拦截
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Forbidden.png
 rules:
-  - RULE-SET,private_ip,直连,no-resolve
-  - RULE-SET,private_domain,直连
-  - RULE-SET,diy_direct,直连
-  - RULE-SET,google_cn_domain,直连
-  - RULE-SET,apple_cn_domain,直连
-  - RULE-SET,category_games_cn_domain,直连
-  - RULE-SET,steam_cn_domain,直连
-  - RULE-SET,game_download_cn_domain,直连
-  - RULE-SET,steam_cn_direct,直连
-  - RULE-SET,ads_domain,拒绝
-  - RULE-SET,youtube_domain,📺 YouTube
-  - RULE-SET,tiktok_domain,🎶 TikTok
-  - RULE-SET,tiktok_extra,🎶 TikTok
-  - RULE-SET,google_services,🇬 Google 服务
-  - RULE-SET,google_domain,🇬 Google 服务
-  - RULE-SET,googlefcm_domain,🇬 Google 服务
-  - RULE-SET,google_ip,🇬 Google 服务,no-resolve
-  - RULE-SET,chatgpt,🤖 ChatGPT
-  - RULE-SET,openai_domain,🤖 ChatGPT
-  - RULE-SET,ai_custom,🤖 AI 其他
-  - RULE-SET,anthropic_domain,🤖 AI 其他
-  - RULE-SET,ai_domain,🤖 AI 其他
-  - RULE-SET,dev_download,⬇️ 下载稳定
-  - RULE-SET,github_domain,⬇️ 下载稳定
-  - RULE-SET,docker_domain,⬇️ 下载稳定
-  - RULE-SET,nvidia_domain,⬇️ 下载稳定
-  - RULE-SET,steam_domain,🎮 Steam 下载
-  - RULE-SET,games_domain,🎮 游戏服务
-  - RULE-SET,ea_classical,🎮 游戏服务
-  - RULE-SET,epic_classical,🎮 游戏服务
-  - RULE-SET,blizzard_classical,🎮 游戏服务
-  - RULE-SET,playstation_classical,🎮 游戏服务
-  - RULE-SET,nintendo_classical,🎮 游戏服务
-  - RULE-SET,netflix_domain,🎬 流媒体
-  - RULE-SET,netflix_ip,🎬 流媒体,no-resolve
-  - RULE-SET,disney_domain,🎬 流媒体
-  - RULE-SET,hbo_domain,🎬 流媒体
-  - RULE-SET,spotify_domain,🎬 流媒体
-  - RULE-SET,reddit_domain,🎬 流媒体
-  - RULE-SET,apple_domain,🍎 Apple
-  - RULE-SET,microsoft_domain,🪟 Microsoft
-  - RULE-SET,onedrive_domain,🪟 Microsoft
-  - RULE-SET,okx_domain,₿ 加密金融
-  - RULE-SET,bybit_domain,₿ 加密金融
-  - RULE-SET,binance_domain,₿ 加密金融
-  - RULE-SET,proxylite,🌍 默认代理
-  - RULE-SET,gfw_domain,🌍 默认代理
-  - RULE-SET,geolocation_not_cn_domain,🌍 默认代理
-  - RULE-SET,cn_domain,直连
-  - RULE-SET,cn_ip,直连,no-resolve
-  - MATCH,🧭 其他兜底
-
+- RULE-SET,Google-CN / Domain,🇨🇳 国内直连
+- RULE-SET,Google@CN / Domain,🇨🇳 国内直连
+- RULE-SET,Steam-CN / Domain,🇨🇳 国内直连
+- RULE-SET,Games-CN / Domain,🇨🇳 国内直连
+- DOMAIN-SUFFIX,opencode.ai,🇨🇳 国内直连
+- DOMAIN-SUFFIX,youtube.com,▶️ YouTube
+- DOMAIN-SUFFIX,youtube-nocookie.com,▶️ YouTube
+- DOMAIN-SUFFIX,googlevideo.com,▶️ YouTube
+- DOMAIN-SUFFIX,ytimg.com,▶️ YouTube
+- DOMAIN,youtubei.googleapis.com,▶️ YouTube
+- DOMAIN,ytimg.l.google.com,▶️ YouTube
+- DOMAIN-SUFFIX,withyoutube.com,▶️ YouTube
+- DOMAIN-SUFFIX,huggingface.co,🤗 HuggingFace
+- DOMAIN-SUFFIX,hf.co,🤗 HuggingFace
+- DOMAIN-SUFFIX,huggingfaceusercontent.com,🤗 HuggingFace
+- DOMAIN-SUFFIX,xethub.hf.co,🤗 HuggingFace
+- DOMAIN-SUFFIX,cdn-lfs.huggingface.co,🤗 HuggingFace
+- DOMAIN-SUFFIX,cdn-lfs.hf.co,🤗 HuggingFace
+- DOMAIN-SUFFIX,kaggle.com,📦 大文件下载
+- DOMAIN-SUFFIX,kaggleusercontent.com,📦 大文件下载
+- DOMAIN-SUFFIX,openaipublic.blob.core.windows.net,📦 大文件下载
+- DOMAIN-SUFFIX,github.com,🐙 GitHub
+- DOMAIN-SUFFIX,githubusercontent.com,🐙 GitHub
+- DOMAIN-SUFFIX,githubassets.com,🐙 GitHub
+- DOMAIN-SUFFIX,github-releases.githubusercontent.com,🐙 GitHub
+- DOMAIN-SUFFIX,objects.githubusercontent.com,🐙 GitHub
+- DOMAIN-SUFFIX,codeload.github.com,🐙 GitHub
+- DOMAIN-SUFFIX,github-cloud.s3.amazonaws.com,🐙 GitHub
+- DOMAIN-SUFFIX,gitlab.com,🐙 GitHub
+- DOMAIN-SUFFIX,gitlab-static.net,🐙 GitHub
+- DOMAIN-SUFFIX,sourceforge.net,🐙 GitHub
+- DOMAIN-SUFFIX,dockerhub.ariesmartin.com,DIRECT
+- DOMAIN-SUFFIX,dockerproxy.net,DIRECT
+- DOMAIN-SUFFIX,docker.fnnas.com,DIRECT
+- DOMAIN-SUFFIX,registry.hub.docker.com,📦 大文件下载
+- DOMAIN-SUFFIX,docker.io,📦 大文件下载
+- DOMAIN-SUFFIX,registry-1.docker.io,📦 大文件下载
+- DOMAIN-SUFFIX,auth.docker.io,📦 大文件下载
+- DOMAIN-SUFFIX,production.cloudflare.docker.com,📦 大文件下载
+- DOMAIN-SUFFIX,docker.com,📦 大文件下载
+- DOMAIN-SUFFIX,dockerstatic.com,📦 大文件下载
+- DOMAIN-SUFFIX,ghcr.io,DIRECT
+- DOMAIN-SUFFIX,pkg-containers.githubusercontent.com,🐙 GitHub
+- DOMAIN-SUFFIX,quay.io,📦 大文件下载
+- DOMAIN-SUFFIX,gcr.io,📦 大文件下载
+- DOMAIN-SUFFIX,k8s.gcr.io,📦 大文件下载
+- DOMAIN-SUFFIX,registry.k8s.io,📦 大文件下载
+- DOMAIN-SUFFIX,mcr.microsoft.com,📦 大文件下载
+- DOMAIN-SUFFIX,pypi.org,📦 大文件下载
+- DOMAIN-SUFFIX,pythonhosted.org,📦 大文件下载
+- DOMAIN-SUFFIX,files.pythonhosted.org,📦 大文件下载
+- DOMAIN-SUFFIX,npmjs.org,📦 大文件下载
+- DOMAIN-SUFFIX,registry.npmjs.org,📦 大文件下载
+- DOMAIN-SUFFIX,npmjs.com,📦 大文件下载
+- DOMAIN-SUFFIX,nodejs.org,📦 大文件下载
+- DOMAIN-SUFFIX,yarnpkg.com,📦 大文件下载
+- DOMAIN-SUFFIX,dl.yarnpkg.com,📦 大文件下载
+- DOMAIN-SUFFIX,rubygems.org,📦 大文件下载
+- DOMAIN-SUFFIX,crates.io,📦 大文件下载
+- DOMAIN-SUFFIX,static.crates.io,📦 大文件下载
+- DOMAIN-SUFFIX,index.crates.io,📦 大文件下载
+- DOMAIN-SUFFIX,go.dev,📦 大文件下载
+- DOMAIN-SUFFIX,golang.org,📦 大文件下载
+- DOMAIN-SUFFIX,proxy.golang.org,📦 大文件下载
+- DOMAIN-SUFFIX,sum.golang.org,📦 大文件下载
+- DOMAIN-SUFFIX,download.sys.truenas.net,📦 大文件下载
+- DOMAIN-SUFFIX,update-master.ixsystems.com,📦 大文件下载
+- DOMAIN-SUFFIX,update.ixsystems.com,📦 大文件下载
+- DOMAIN-SUFFIX,ixsystems.com,📦 大文件下载
+- DOMAIN-SUFFIX,truenas.com,📦 大文件下载
+- DOMAIN-SUFFIX,download.docker.com,📦 大文件下载
+- DOMAIN-SUFFIX,packages.microsoft.com,📦 大文件下载
+- DOMAIN-SUFFIX,download.visualstudio.microsoft.com,📦 大文件下载
+- DOMAIN-SUFFIX,packages.cloud.google.com,📦 大文件下载
+- DOMAIN-SUFFIX,dl.google.com,📦 大文件下载
+- DOMAIN-SUFFIX,storage.googleapis.com,📦 大文件下载
+- DOMAIN-SUFFIX,apt.llvm.org,📦 大文件下载
+- DOMAIN-SUFFIX,releases.llvm.org,📦 大文件下载
+- DOMAIN-SUFFIX,kernel.org,📦 大文件下载
+- DOMAIN-SUFFIX,cdn.kernel.org,📦 大文件下载
+- DOMAIN-SUFFIX,ftp.gnu.org,📦 大文件下载
+- DOMAIN-SUFFIX,google.com,🇬 Google 服务
+- DOMAIN-SUFFIX,googleapis.com,🇬 Google 服务
+- DOMAIN-SUFFIX,gstatic.com,🇬 Google 服务
+- DOMAIN-SUFFIX,googleusercontent.com,🇬 Google 服务
+- DOMAIN-SUFFIX,ggpht.com,🇬 Google 服务
+- DOMAIN-SUFFIX,duckduckgo.com,🔎 搜索
+- DOMAIN-SUFFIX,ddg.gg,🔎 搜索
+- DOMAIN-SUFFIX,startpage.com,🔎 搜索
+- DOMAIN-SUFFIX,brave.com,🔎 搜索
+- DOMAIN-SUFFIX,search.brave.com,🔎 搜索
+- DOMAIN-SUFFIX,qwant.com,🔎 搜索
+- DOMAIN-SUFFIX,hf-mirror.com,DIRECT
+- RULE-SET,TEST / Domain,🧪 测试
+- RULE-SET,Block / Domain,🛑 拦截
+- RULE-SET,YouTube / Domain,▶️ YouTube
+- RULE-SET,GitHub / Domain,🐙 GitHub
+- DOMAIN-SUFFIX,github.io,🐙 GitHub
+- DOMAIN-SUFFIX,githubstatus.com,🐙 GitHub
+- DOMAIN-SUFFIX,github.blog,🐙 GitHub
+- DOMAIN-SUFFIX,github.githubassets.com,🐙 GitHub
+- DOMAIN-SUFFIX,media.githubusercontent.com,🐙 GitHub
+- DOMAIN-SUFFIX,user-images.githubusercontent.com,🐙 GitHub
+- DOMAIN-SUFFIX,private-user-images.githubusercontent.com,🐙 GitHub
+- DOMAIN-SUFFIX,avatars.githubusercontent.com,🐙 GitHub
+- DOMAIN-SUFFIX,github-production-release-asset-2e65be.s3.amazonaws.com,🐙 GitHub
+- DOMAIN-SUFFIX,github-production-user-asset-6210df.s3.amazonaws.com,🐙 GitHub
+- DOMAIN-SUFFIX,github-production-repository-file-5c1aeb.s3.amazonaws.com,🐙 GitHub
+- DOMAIN-SUFFIX,github-registry-files.githubusercontent.com,🐙 GitHub
+- DOMAIN-SUFFIX,objects-origin.githubusercontent.com,🐙 GitHub
+- RULE-SET,Google-Play / Domain,🇬 Google 服务
+- RULE-SET,Google / Domain,🇬 Google 服务
+- RULE-SET,GoogleFCM / Domain,🇬 Google 服务
+- RULE-SET,Google / IP,🇬 Google 服务,no-resolve
+- RULE-SET,ChatGPT / Domain,🤖 ChatGPT
+- RULE-SET,Claude / Domain,🤖 AI 总入口
+- RULE-SET,Copilot / Domain,🤖 AI 总入口
+- RULE-SET,Gemini / Domain,🤖 AI 总入口
+- RULE-SET,Groq / Domain,🤖 AI 总入口
+- RULE-SET,Grok / Domain,🤖 AI 总入口
+- RULE-SET,Meta AI / Domain,🤖 Meta AI
+- RULE-SET,Perplexity / Domain,🤖 Perplexity
+- RULE-SET,Microsoft / Domain,🪟 Microsoft
+- RULE-SET,Apple / Domain,🍎 Apple
+- RULE-SET,Apple-CN / Domain,🍎 Apple
+- RULE-SET,OKX / Domain,₿ 加密金融
+- RULE-SET,Bybit / Domain,₿ 加密金融
+- RULE-SET,Binance / Domain,₿ 加密金融
+- RULE-SET,TikTok / Domain,🎶 TikTok
+- RULE-SET,Netflix / Domain,🎬 流媒体
+- RULE-SET,Netflix / IP,🎬 流媒体,no-resolve
+- RULE-SET,Disney / Domain,🎬 流媒体
+- RULE-SET,Amazon / Domain,🎬 流媒体
+- RULE-SET,HBO / Domain,🎬 流媒体
+- RULE-SET,Crunchyroll / Domain,🎬 流媒体
+- RULE-SET,Popcorn / Domain,🎬 流媒体
+- RULE-SET,Spotify / Domain,🎬 流媒体
+- RULE-SET,Steam / Domain,🎮 Steam 下载
+- RULE-SET,Epic / Domain,🎮 游戏
+- RULE-SET,EA / Domain,🎮 游戏
+- RULE-SET,Blizzard / Domain,🎮 游戏
+- RULE-SET,UBI / Domain,🎮 游戏
+- RULE-SET,PlayStation / Domain,🎮 游戏
+- RULE-SET,Nintend / Domain,🎮 游戏
+- RULE-SET,Nvidia / Domain,🟩 NVIDIA
+- RULE-SET,Reddit / Domain,💬 Reddit
+- RULE-SET,Proxy / Domain,🌍 国外默认
+- RULE-SET,Globe / Domain,🌍 国外默认
+- RULE-SET,Direct / Domain,🇨🇳 国内直连
+- RULE-SET,China / Domain,🇨🇳 国内直连
+- RULE-SET,China / IP,🇨🇳 国内直连,no-resolve
+- RULE-SET,Private / Domain,🇨🇳 国内直连
+- MATCH,🧭 其他兜底
 rule-anchor:
-  ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: mrs, proxy: ⬇️ 下载稳定}
-  domain: &domain {type: http, interval: 86400, behavior: domain, format: mrs, proxy: ⬇️ 下载稳定}
-  class: &class {type: http, interval: 86400, behavior: classical, format: text, proxy: ⬇️ 下载稳定}
-
+  ip:
+    type: http
+    interval: 86400
+    behavior: ipcidr
+    format: mrs
+  domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+  class:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
 rule-providers:
-  fakeipfilter_domain: {<<: *domain, url: "https://raw.githubusercontent.com/wwqgtxx/clash-rules/release/fakeip-filter.mrs"}
-  private_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"}
-  private_ip: {<<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.mrs"}
-  diy_direct: {<<: *class, url: "https://raw.githubusercontent.com/ariesmartin/rules/main/DIYDirect.list"}
-  google_cn_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google-cn.mrs"}
-  apple_cn_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple-cn.mrs"}
-  category_games_cn_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-games@cn.mrs"}
-  steam_cn_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/steam@cn.mrs"}
-  game_download_cn_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-game-platforms-download.mrs"}
-  steam_cn_direct: {<<: *class, url: "https://raw.githubusercontent.com/ariesmartin/rules/main/SteamCNDirect.list"}
-  ads_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ads-all.mrs"}
-  youtube_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs"}
-  tiktok_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/tiktok.mrs"}
-  tiktok_extra: {<<: *class, url: "https://raw.githubusercontent.com/ariesmartin/rules/main/TikTokExtra.list"}
-  google_services: {<<: *class, url: "https://raw.githubusercontent.com/ariesmartin/rules/main/GoogleServices.list"}
-  google_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs"}
-  googlefcm_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/googlefcm.mrs"}
-  google_ip: {<<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.mrs"}
-  chatgpt: {<<: *class, url: "https://raw.githubusercontent.com/ariesmartin/rules/main/ChatGPT.list"}
-  openai_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/openai.mrs"}
-  ai_custom: {<<: *class, url: "https://raw.githubusercontent.com/ariesmartin/rules/main/AI.list"}
-  anthropic_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/anthropic.mrs"}
-  ai_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.mrs"}
-  dev_download: {<<: *class, url: "https://raw.githubusercontent.com/ariesmartin/rules/main/DevDownload.list"}
-  github_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs"}
-  docker_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/docker.mrs"}
-  nvidia_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/nvidia.mrs"}
-  steam_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/steam.mrs"}
-  games_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-games.mrs"}
-  ea_classical: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/EA/EA.list"}
-  epic_classical: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Epic/Epic.list"}
-  blizzard_classical: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Blizzard/Blizzard.list"}
-  playstation_classical: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PlayStation/PlayStation.list"}
-  nintendo_classical: {<<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Nintendo/Nintendo.list"}
-  netflix_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs"}
-  netflix_ip: {<<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/netflix.mrs"}
-  disney_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/disney.mrs"}
-  hbo_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/hbo.mrs"}
-  spotify_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/spotify.mrs"}
-  reddit_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/reddit.mrs"}
-  apple_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple.mrs"}
-  microsoft_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.mrs"}
-  onedrive_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/onedrive.mrs"}
-  okx_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/okx.mrs"}
-  bybit_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/bybit.mrs"}
-  binance_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/binance.mrs"}
-  proxylite: {<<: *class, url: "https://raw.githubusercontent.com/ariesmartin/rules/main/ProxyLite.list"}
-  gfw_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/gfw.mrs"}
-  geolocation_not_cn_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.mrs"}
-  cn_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs"}
-  cn_ip: {<<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs"}
+  TEST / Domain:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Check.list
+    proxy: 🌍 国外默认
+  ChatGPT / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/openai.mrs
+    proxy: 🌍 国外默认
+  Claude / Domain:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Claude/Claude.list
+    proxy: 🌍 国外默认
+  Meta AI / Domain:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/MetaAi.list
+    proxy: 🌍 国外默认
+  Perplexity / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/perplexity.mrs
+    proxy: 🌍 国外默认
+  Copilot / Domain:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Copilot.list
+    proxy: 🌍 国外默认
+  Gemini / Domain:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Gemini.list
+    proxy: 🌍 国外默认
+  GitHub / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs
+    proxy: 🌍 国外默认
+  Amazon / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/amazon.mrs
+    proxy: 🌍 国外默认
+  Apple-CN / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple-cn.mrs
+    proxy: 🌍 国外默认
+  Apple / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple.mrs
+    proxy: 🌍 国外默认
+  Microsoft / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.mrs
+    proxy: 🌍 国外默认
+  OKX / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/okx.mrs
+    proxy: 🌍 国外默认
+  Bybit / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/bybit.mrs
+    proxy: 🌍 国外默认
+  Binance / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/binance.mrs
+    proxy: 🌍 国外默认
+  TikTok / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/tiktok.mrs
+    proxy: 🌍 国外默认
+  Netflix / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs
+    proxy: 🌍 国外默认
+  Netflix / IP:
+    type: http
+    interval: 86400
+    behavior: ipcidr
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/netflix.mrs
+    proxy: 🌍 国外默认
+  Disney / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/disney.mrs
+    proxy: 🌍 国外默认
+  HBO / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/hbo.mrs
+    proxy: 🌍 国外默认
+  Spotify / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/spotify.mrs
+    proxy: 🌍 国外默认
+  Steam / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/steam.mrs
+    proxy: 🌍 国外默认
+  Epic / Domain:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Epic/Epic.list
+    proxy: 🌍 国外默认
+  EA / Domain:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/EA/EA.list
+    proxy: 🌍 国外默认
+  Blizzard / Domain:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Blizzard/Blizzard.list
+    proxy: 🌍 国外默认
+  UBI / Domain:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/UBI/UBI.list
+    proxy: 🌍 国外默认
+  PlayStation / Domain:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/PlayStation/PlayStation.list
+    proxy: 🌍 国外默认
+  Nintend / Domain:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Nintendo/Nintendo.list
+    proxy: 🌍 国外默认
+  Proxy / Domain:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Proxy.list
+    proxy: 🌍 国外默认
+  Globe / Domain:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Global/Global.list
+    proxy: 🌍 国外默认
+  Block / Domain:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Block.list
+    proxy: 🌍 国外默认
+  Nvidia / Domain:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Nvidia/Nvidia.list
+    proxy: 🌍 国外默认
+  Crunchyroll / Domain:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Crunchyroll.list
+    proxy: 🌍 国外默认
+  Reddit / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/reddit.mrs
+    proxy: 🌍 国外默认
+  Groq / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/groq.mrs
+    proxy: 🌍 国外默认
+  Grok / Domain:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Grok.list
+    proxy: 🌍 国外默认
+  Popcorn / Domain:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Popcorn.list
+    proxy: 🌍 国外默认
+  Direct / Domain:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Direct.list
+    proxy: 🌍 国外默认
+  Private / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs
+    proxy: 🌍 国外默认
+  China / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs
+    proxy: 🌍 国外默认
+  China / IP:
+    type: http
+    interval: 86400
+    behavior: ipcidr
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs
+    proxy: 🌍 国外默认
+  YouTube / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs
+    proxy: 🌍 国外默认
+  Google-CN / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google-cn.mrs
+    proxy: 🌍 国外默认
+  Google@CN / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google@cn.mrs
+    proxy: 🌍 国外默认
+  Google / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs
+    proxy: 🌍 国外默认
+  GoogleFCM / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/googlefcm.mrs
+    proxy: 🌍 国外默认
+  Google-Play / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google-play.mrs
+    proxy: 🌍 国外默认
+  Google / IP:
+    type: http
+    interval: 86400
+    behavior: ipcidr
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.mrs
+    proxy: 🌍 国外默认
+  Steam-CN / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/steam@cn.mrs
+    proxy: 🌍 国外默认
+  Games-CN / Domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-games@cn.mrs
+    proxy: 🌍 国外默认
+tcp-concurrent: true
+unified-delay: true
+keep-alive-interval: 15
+find-process-mode: strict
