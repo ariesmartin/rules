@@ -610,6 +610,21 @@ proxy-groups:
   include-all: true
   filter: ^((?!(直连|拒绝|COMPATIBLE|PASS|REJECT|REJECT-DROP|BW-自建|自建)).)*$
   icon: https://api.iconify.design/fluent-emoji-flat/package.svg
+- name: 下载实测 01
+  type: select
+  include-all: true
+  filter: ^((?!(直连|拒绝|COMPATIBLE|PASS|REJECT|REJECT-DROP|BW-自建|自建)).)*$
+  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
+- name: 下载实测 02
+  type: select
+  include-all: true
+  filter: ^((?!(直连|拒绝|COMPATIBLE|PASS|REJECT|REJECT-DROP|BW-自建|自建)).)*$
+  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
+- name: 下载实测 03
+  type: select
+  include-all: true
+  filter: ^((?!(直连|拒绝|COMPATIBLE|PASS|REJECT|REJECT-DROP|BW-自建|自建)).)*$
+  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
 - name: 下载手选
   type: select
   include-all: true
@@ -621,10 +636,27 @@ proxy-groups:
   lazy: false
   url: https://www.gstatic.com/generate_204
   proxies:
-  - 下载实测
+  - 下载实测 01
+  - 下载实测 02
+  - 下载实测 03
   - 下载手选
   icon: https://api.iconify.design/fluent-emoji-flat/repeat-button.svg
 - name: ED 全部实测
+  type: select
+  include-all: true
+  filter: (?i)(EDHK|EDUS)
+  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
+- name: ED 全部实测 01
+  type: select
+  include-all: true
+  filter: (?i)(EDHK|EDUS)
+  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
+- name: ED 全部实测 02
+  type: select
+  include-all: true
+  filter: (?i)(EDHK|EDUS)
+  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
+- name: ED 全部实测 03
   type: select
   include-all: true
   filter: (?i)(EDHK|EDUS)
@@ -641,10 +673,27 @@ proxy-groups:
   lazy: false
   url: https://www.gstatic.com/generate_204
   proxies:
-  - ED 全部实测
+  - ED 全部实测 01
+  - ED 全部实测 02
+  - ED 全部实测 03
   - ED 全部手选
   icon: https://api.iconify.design/fluent-emoji-flat/repeat-button.svg
 - name: CC 全部实测
+  type: select
+  include-all: true
+  filter: (?i)(CCUS|(?:^|[ ｜_\-\(\[])(?:CC)(?:$|[ ｜_\-\)\]]))
+  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
+- name: CC 全部实测 01
+  type: select
+  include-all: true
+  filter: (?i)(CCUS|(?:^|[ ｜_\-\(\[])(?:CC)(?:$|[ ｜_\-\)\]]))
+  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
+- name: CC 全部实测 02
+  type: select
+  include-all: true
+  filter: (?i)(CCUS|(?:^|[ ｜_\-\(\[])(?:CC)(?:$|[ ｜_\-\)\]]))
+  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
+- name: CC 全部实测 03
   type: select
   include-all: true
   filter: (?i)(CCUS|(?:^|[ ｜_\-\(\[])(?:CC)(?:$|[ ｜_\-\)\]]))
@@ -661,10 +710,27 @@ proxy-groups:
   lazy: false
   url: https://www.gstatic.com/generate_204
   proxies:
-  - CC 全部实测
+  - CC 全部实测 01
+  - CC 全部实测 02
+  - CC 全部实测 03
   - CC 全部手选
   icon: https://api.iconify.design/fluent-emoji-flat/repeat-button.svg
 - name: 香港实测
+  type: select
+  include-all: true
+  filter: (?i)(香港|HK|Hong Kong)
+  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
+- name: 香港实测 01
+  type: select
+  include-all: true
+  filter: (?i)(香港|HK|Hong Kong)
+  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
+- name: 香港实测 02
+  type: select
+  include-all: true
+  filter: (?i)(香港|HK|Hong Kong)
+  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
+- name: 香港实测 03
   type: select
   include-all: true
   filter: (?i)(香港|HK|Hong Kong)
@@ -681,10 +747,27 @@ proxy-groups:
   lazy: false
   url: https://www.gstatic.com/generate_204
   proxies:
-  - 香港实测
+  - 香港实测 01
+  - 香港实测 02
+  - 香港实测 03
   - 香港手选
   icon: https://api.iconify.design/fluent-emoji-flat/repeat-button.svg
 - name: 新加坡实测
+  type: select
+  include-all: true
+  filter: (?i)(新加坡|SG|Singapore)
+  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
+- name: 新加坡实测 01
+  type: select
+  include-all: true
+  filter: (?i)(新加坡|SG|Singapore)
+  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
+- name: 新加坡实测 02
+  type: select
+  include-all: true
+  filter: (?i)(新加坡|SG|Singapore)
+  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
+- name: 新加坡实测 03
   type: select
   include-all: true
   filter: (?i)(新加坡|SG|Singapore)
@@ -701,10 +784,27 @@ proxy-groups:
   lazy: false
   url: https://www.gstatic.com/generate_204
   proxies:
-  - 新加坡实测
+  - 新加坡实测 01
+  - 新加坡实测 02
+  - 新加坡实测 03
   - 新加坡手选
   icon: https://api.iconify.design/fluent-emoji-flat/repeat-button.svg
 - name: 日本实测
+  type: select
+  include-all: true
+  filter: (?i)(日本|JP|Japan|Tokyo)
+  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
+- name: 日本实测 01
+  type: select
+  include-all: true
+  filter: (?i)(日本|JP|Japan|Tokyo)
+  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
+- name: 日本实测 02
+  type: select
+  include-all: true
+  filter: (?i)(日本|JP|Japan|Tokyo)
+  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
+- name: 日本实测 03
   type: select
   include-all: true
   filter: (?i)(日本|JP|Japan|Tokyo)
@@ -721,10 +821,27 @@ proxy-groups:
   lazy: false
   url: https://www.gstatic.com/generate_204
   proxies:
-  - 日本实测
+  - 日本实测 01
+  - 日本实测 02
+  - 日本实测 03
   - 日本手选
   icon: https://api.iconify.design/fluent-emoji-flat/repeat-button.svg
 - name: 台湾实测
+  type: select
+  include-all: true
+  filter: (?i)(台湾|台灣|TW|Taiwan)
+  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
+- name: 台湾实测 01
+  type: select
+  include-all: true
+  filter: (?i)(台湾|台灣|TW|Taiwan)
+  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
+- name: 台湾实测 02
+  type: select
+  include-all: true
+  filter: (?i)(台湾|台灣|TW|Taiwan)
+  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
+- name: 台湾实测 03
   type: select
   include-all: true
   filter: (?i)(台湾|台灣|TW|Taiwan)
@@ -741,10 +858,27 @@ proxy-groups:
   lazy: false
   url: https://www.gstatic.com/generate_204
   proxies:
-  - 台湾实测
+  - 台湾实测 01
+  - 台湾实测 02
+  - 台湾实测 03
   - 台湾手选
   icon: https://api.iconify.design/fluent-emoji-flat/repeat-button.svg
 - name: 美国实测
+  type: select
+  include-all: true
+  filter: (?i)(美国|US|United States|LAX|SJC)
+  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
+- name: 美国实测 01
+  type: select
+  include-all: true
+  filter: (?i)(美国|US|United States|LAX|SJC)
+  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
+- name: 美国实测 02
+  type: select
+  include-all: true
+  filter: (?i)(美国|US|United States|LAX|SJC)
+  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
+- name: 美国实测 03
   type: select
   include-all: true
   filter: (?i)(美国|US|United States|LAX|SJC)
@@ -761,10 +895,27 @@ proxy-groups:
   lazy: false
   url: https://www.gstatic.com/generate_204
   proxies:
-  - 美国实测
+  - 美国实测 01
+  - 美国实测 02
+  - 美国实测 03
   - 美国手选
   icon: https://api.iconify.design/fluent-emoji-flat/repeat-button.svg
 - name: 全部实测
+  type: select
+  include-all: true
+  filter: ^((?!(直连|拒绝|COMPATIBLE|PASS|REJECT|REJECT-DROP|BW-自建|自建)).)*$
+  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
+- name: 全部实测 01
+  type: select
+  include-all: true
+  filter: ^((?!(直连|拒绝|COMPATIBLE|PASS|REJECT|REJECT-DROP|BW-自建|自建)).)*$
+  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
+- name: 全部实测 02
+  type: select
+  include-all: true
+  filter: ^((?!(直连|拒绝|COMPATIBLE|PASS|REJECT|REJECT-DROP|BW-自建|自建)).)*$
+  icon: https://api.iconify.design/fluent-emoji-flat/direct-hit.svg
+- name: 全部实测 03
   type: select
   include-all: true
   filter: ^((?!(直连|拒绝|COMPATIBLE|PASS|REJECT|REJECT-DROP|BW-自建|自建)).)*$
@@ -781,7 +932,9 @@ proxy-groups:
   lazy: false
   url: https://www.gstatic.com/generate_204
   proxies:
-  - 全部实测
+  - 全部实测 01
+  - 全部实测 02
+  - 全部实测 03
   - 全部手选
   icon: https://api.iconify.design/fluent-emoji-flat/repeat-button.svg
 - name: 其他兜底
