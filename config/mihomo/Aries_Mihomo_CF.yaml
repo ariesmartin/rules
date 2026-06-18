@@ -98,19 +98,19 @@ proxy-groups:
   - 🇯🇵 日本故转
   - 🇹🇼 台湾故转
   - 🇺🇸 美国故转
-  - 🧭 其他故转
+  - 🔁 全部故转
   - 🛑 拦截
   icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/DIRECT.png
 - name: 🌍 国外默认
   type: select
   proxies:
   - 🔒 自建保留
+  - 🔁 全部故转
   - 🇭🇰 香港故转
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
   - 🇹🇼 台湾故转
   - 🇺🇸 美国故转
-  - 🧭 其他故转
   - ⬇️ 下载手选
   - 直连
   - 🛑 拦截
@@ -120,16 +120,27 @@ proxy-groups:
   - 🧰 全部手选
   - 🇭🇰 香港智选
   icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Global.png
-- name: 🧭 其他兜底
-  type: select
+- name: 🔁 全部故转
+  type: fallback
+  interval: 180
+  lazy: false
   proxies:
-  - 🔒 自建保留
   - 🇭🇰 香港故转
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
   - 🇹🇼 台湾故转
   - 🇺🇸 美国故转
-  - 🧭 其他故转
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Failover.png
+- name: 🧭 其他兜底
+  type: select
+  proxies:
+  - 🔒 自建保留
+  - 🔁 全部故转
+  - 🇭🇰 香港故转
+  - 🇸🇬 新加坡故转
+  - 🇯🇵 日本故转
+  - 🇹🇼 台湾故转
+  - 🇺🇸 美国故转
   - ⬇️ 下载手选
   - 直连
   - 🛑 拦截
@@ -142,12 +153,12 @@ proxy-groups:
   type: select
   proxies:
   - 🔒 自建保留
+  - 🔁 全部故转
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
   - 🇹🇼 台湾故转
   - 🇺🇸 美国故转
   - 🇭🇰 香港故转
-  - 🧭 其他故转
   - 直连
   - 🛑 拦截
   - 🧰 全部手选
@@ -186,7 +197,7 @@ proxy-groups:
   - 🇯🇵 日本故转
   - 🇹🇼 台湾故转
   - 🇭🇰 香港故转
-  - 🧭 其他故转
+  - 🔁 全部故转
   - 直连
   - 🛑 拦截
   - 🔎 搜索
@@ -218,7 +229,7 @@ proxy-groups:
   - 🇯🇵 日本故转
   - 🇹🇼 台湾故转
   - 🇺🇸 美国故转
-  - 🧭 其他故转
+  - 🔁 全部故转
   - 直连
   - 🛑 拦截
   - 🤖 AI 总入口
@@ -237,7 +248,7 @@ proxy-groups:
   - 🇯🇵 日本故转
   - 🇹🇼 台湾故转
   - 🇺🇸 美国故转
-  - 🧭 其他故转
+  - 🔁 全部故转
   - 直连
   - 🛑 拦截
   - 🤖 AI 总入口
@@ -258,7 +269,7 @@ proxy-groups:
   - 🇺🇸 美国故转
   - 🇭🇰 香港故转
   - ⚡ 下载测速
-  - 🧭 其他故转
+  - 🔁 全部故转
   - 🧰 全部手选
   - 直连
   - 🛑 拦截
@@ -275,7 +286,7 @@ proxy-groups:
   - 🇹🇼 台湾故转
   - 🇺🇸 美国故转
   - 🇭🇰 香港故转
-  - 🧭 其他故转
+  - 🔁 全部故转
   icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/SpeedTest.png
 - name: 📦 大文件下载
   type: select
@@ -287,7 +298,7 @@ proxy-groups:
   - 🇺🇸 美国故转
   - 🇭🇰 香港故转
   - ⚡ 下载测速
-  - 🧭 其他故转
+  - 🔁 全部故转
   - 🧰 全部手选
   - 直连
   - 🛑 拦截
@@ -303,7 +314,7 @@ proxy-groups:
   - 🇺🇸 美国故转
   - 🇭🇰 香港故转
   - ⚡ 下载测速
-  - 🧭 其他故转
+  - 🔁 全部故转
   - 🧰 全部手选
   - 直连
   - 🛑 拦截
@@ -319,7 +330,7 @@ proxy-groups:
   - 🇺🇸 美国故转
   - 🇭🇰 香港故转
   - ⚡ 下载测速
-  - 🧭 其他故转
+  - 🔁 全部故转
   - 🧰 全部手选
   - 直连
   - 🛑 拦截
@@ -329,12 +340,12 @@ proxy-groups:
   type: select
   proxies:
   - 🔒 自建保留
+  - 🔁 全部故转
   - 🇭🇰 香港故转
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
   - 🇹🇼 台湾故转
   - 🇺🇸 美国故转
-  - 🧭 其他故转
   - 直连
   - 🛑 拦截
   - 🧰 全部手选
@@ -343,12 +354,12 @@ proxy-groups:
   type: select
   proxies:
   - 🔒 自建保留
+  - 🔁 全部故转
   - 🇭🇰 香港故转
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
   - 🇹🇼 台湾故转
   - 🇺🇸 美国故转
-  - 🧭 其他故转
   - 直连
   - 🛑 拦截
   - 🧰 全部手选
@@ -357,12 +368,12 @@ proxy-groups:
   type: select
   proxies:
   - 🔒 自建保留
+  - 🔁 全部故转
   - 🇭🇰 香港故转
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
   - 🇹🇼 台湾故转
   - 🇺🇸 美国故转
-  - 🧭 其他故转
   - 直连
   - 🛑 拦截
   - 🧰 全部手选
@@ -370,12 +381,12 @@ proxy-groups:
 - type: select
   proxies:
   - 🔒 自建保留
+  - 🔁 全部故转
   - 🇭🇰 香港故转
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
   - 🇹🇼 台湾故转
   - 🇺🇸 美国故转
-  - 🧭 其他故转
   - 直连
   - 🛑 拦截
   - 🔎 搜索
@@ -394,7 +405,7 @@ proxy-groups:
   - 🇺🇸 美国故转
   - 🇭🇰 香港故转
   - ⚡ 下载测速
-  - 🧭 其他故转
+  - 🔁 全部故转
   - 🧰 全部手选
   - 直连
   - 🛑 拦截
@@ -407,12 +418,12 @@ proxy-groups:
 - type: select
   proxies:
   - 🔒 自建保留
+  - 🔁 全部故转
   - 🇭🇰 香港故转
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
   - 🇹🇼 台湾故转
   - 🇺🇸 美国故转
-  - 🧭 其他故转
   - 直连
   - 🛑 拦截
   - 📦 大文件下载
@@ -425,12 +436,12 @@ proxy-groups:
 - type: select
   proxies:
   - 🔒 自建保留
+  - 🔁 全部故转
   - 🇭🇰 香港故转
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
   - 🇹🇼 台湾故转
   - 🇺🇸 美国故转
-  - 🧭 其他故转
   - 直连
   - 🛑 拦截
   - 📦 大文件下载
@@ -443,8 +454,8 @@ proxy-groups:
 - name: 🎮 Steam 下载
   type: select
   proxies:
-  - 📦 大文件下载
   - 🔒 自建保留
+  - 📦 大文件下载
   - 🇭🇰 香港故转
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
@@ -458,12 +469,12 @@ proxy-groups:
 - type: select
   proxies:
   - 🔒 自建保留
+  - 🔁 全部故转
   - 🇭🇰 香港故转
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
   - 🇹🇼 台湾故转
   - 🇺🇸 美国故转
-  - 🧭 其他故转
   - 直连
   - 🛑 拦截
   - ✨ 全部智选
@@ -475,12 +486,12 @@ proxy-groups:
 - type: select
   proxies:
   - 🔒 自建保留
+  - 🔁 全部故转
   - 🇭🇰 香港故转
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
   - 🇹🇼 台湾故转
   - 🇺🇸 美国故转
-  - 🧭 其他故转
   - 直连
   - 🛑 拦截
   - 🔎 搜索
@@ -630,34 +641,6 @@ proxy-groups:
   interval: 180
   filter: (?i)^(?!.*BW-自建)(?=.*(CCUS|EDUS|广美|(?:^|[ ｜_\-\(\[])(?:US)(?:$|[ ｜_\-\)\]])|\.us-|美国|United States|LAX|SJC|联通-LAX|联通-SJC|纽约|洛杉|圣何塞|西雅|芝加|xirancdn\.us)).*$
   icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/USA.png
-- name: 🧭 其他故转
-  type: fallback
-  interval: 180
-  lazy: false
-  proxies:
-  - 🧭 其他手选
-  - 🧭 其他智选
-  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Failover.png
-- name: 🧭 其他手选
-  type: select
-  include-all: true
-  filter: (?i)^((?!(直连|拒绝|COMPATIBLE|PASS|REJECT|REJECT-DROP|BW-自建|香港|HKG|Hong Kong|HongKong|移动-HKG|广港|(?:^|[ ｜_\-\(\[])(?:HK)(?:$|[ ｜_\-\)\]])|新加坡|SIN|Singapore|电信-SIN|狮城|广新|(?:^|[ ｜_\-\(\[])(?:SG)(?:$|[ ｜_\-\)\]])|日本|JP|JPN|NRT|Tokyo|Japan|大阪|东京|東京|台湾|台灣|TW|TWN|TPE|Taiwan|台北|臺北|CCUS|EDUS|广美|(?:^|[ ｜_\-\(\[])(?:US)(?:$|[ ｜_\-\)\]])|\.us-|美国|United States|LAX|SJC|联通-LAX|联通-SJC|纽约|洛杉|圣何塞|西雅|芝加|xirancdn\.us)).)*$
-  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Other.png
-- name: 🧭 其他智选
-  type: smart
-  include-all: true
-  policy-priority: .*EDHK.*:0.85;.*CC.*:1.2
-  uselightgbm: true
-  collectdata: true
-  health-check:
-    enable: true
-    url: https://www.gstatic.com/generate_204
-    interval: 60
-    tolerance: 2
-  strategy: sticky-sessions
-  interval: 180
-  filter: (?i)^((?!(直连|拒绝|COMPATIBLE|PASS|REJECT|REJECT-DROP|BW-自建|香港|HKG|Hong Kong|HongKong|移动-HKG|广港|(?:^|[ ｜_\-\(\[])(?:HK)(?:$|[ ｜_\-\)\]])|新加坡|SIN|Singapore|电信-SIN|狮城|广新|(?:^|[ ｜_\-\(\[])(?:SG)(?:$|[ ｜_\-\)\]])|日本|JP|JPN|NRT|Tokyo|Japan|大阪|东京|東京|台湾|台灣|TW|TWN|TPE|Taiwan|台北|臺北|CCUS|EDUS|广美|(?:^|[ ｜_\-\(\[])(?:US)(?:$|[ ｜_\-\)\]])|\.us-|美国|United States|LAX|SJC|联通-LAX|联通-SJC|纽约|洛杉|圣何塞|西雅|芝加|xirancdn\.us)).)*$
-  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Other.png
 - name: 🧰 全部手选
   type: select
   include-all: true
@@ -690,23 +673,13 @@ proxy-groups:
   - 🇯🇵 日本故转
   - 🇹🇼 台湾故转
   - 🇺🇸 美国故转
-  - 🧭 其他故转
+  - 🔁 全部故转
   - 拒绝
   name: 🧪 测试
   icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/SpeedTest.png
 - type: select
   proxies:
   - 拒绝
-  - 直连
-  - ✨ 全部智选
-  - 🧰 全部手选
-  - 🇭🇰 香港智选
-  - 🇭🇰 香港故转
-  - 🇸🇬 新加坡故转
-  - 🇯🇵 日本故转
-  - 🇹🇼 台湾故转
-  - 🇺🇸 美国故转
-  - 🧭 其他故转
   name: 🛑 拦截
   icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Forbidden.png
 rules:
