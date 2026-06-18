@@ -1,0 +1,11 @@
+# Supplemental Steam China/CDN direct rules.
+# Main source is MetaCubeX steam@cn.mrs. This file only keeps small local supplements.
+DOMAIN-SUFFIX,steamchina.com
+DOMAIN-SUFFIX,steamchina.cn
+DOMAIN-SUFFIX,cm.steampowered.com
+DOMAIN-SUFFIX,steamserver.net
+DOMAIN-SUFFIX,dl.steam.clngaa.com
+DOMAIN-SUFFIX,st.dl.bscstorage.net
+DOMAIN-SUFFIX,st.dl.eccdnx.com
+DOMAIN-SUFFIX,st.dl.pinyuncloud.com
+DOMAIN-SUFFIX,steampipe.steamcontent.tnkjmec.com
