@@ -76,9 +76,18 @@ profile:
   store-selected: true
   store-fake-ip: true
 proxy-groups:
+- name: 🔒 自建保留
+  type: select
+  include-all: true
+  filter: (?i)(BW-自建|自建)
+  proxies:
+  - 直连
+  - 🛑 拦截
+  icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Server.png
 - name: 🇨🇳 国内直连
   type: select
   proxies:
+  - 🔒 自建保留
   - 直连
   - 📦 大文件下载
   - ✨ 全部智选
@@ -95,6 +104,7 @@ proxy-groups:
 - name: 🌍 国外默认
   type: select
   proxies:
+  - 🔒 自建保留
   - 🇭🇰 香港故转
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
@@ -113,6 +123,7 @@ proxy-groups:
 - name: 🧭 其他兜底
   type: select
   proxies:
+  - 🔒 自建保留
   - 🇭🇰 香港故转
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
@@ -130,6 +141,7 @@ proxy-groups:
 - name: 🔎 搜索
   type: select
   proxies:
+  - 🔒 自建保留
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
   - 🇹🇼 台湾故转
@@ -143,6 +155,7 @@ proxy-groups:
 - name: 🔎 Google 搜索
   type: select
   proxies:
+  - 🔒 自建保留
   - 🇺🇸 美国故转
   - 🇭🇰 香港故转
   - 🔎 搜索
@@ -152,6 +165,7 @@ proxy-groups:
 - name: 🇬 Google 服务
   type: select
   proxies:
+  - 🔒 自建保留
   - 🇺🇸 美国故转
   - 🇸🇬 新加坡故转
   - 🇭🇰 香港故转
@@ -166,6 +180,7 @@ proxy-groups:
 - name: 🤖 AI 总入口
   type: select
   proxies:
+  - 🔒 自建保留
   - 🇺🇸 美国故转
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
@@ -182,6 +197,7 @@ proxy-groups:
 - name: 🤖 ChatGPT
   type: select
   proxies:
+  - 🔒 自建保留
   - 🇺🇸 美国故转
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
@@ -196,6 +212,7 @@ proxy-groups:
   icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/ChatGPT.png
 - type: select
   proxies:
+  - 🔒 自建保留
   - 🇭🇰 香港故转
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
@@ -214,6 +231,7 @@ proxy-groups:
   icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/AI_bot.png
 - type: select
   proxies:
+  - 🔒 自建保留
   - 🇭🇰 香港故转
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
@@ -233,6 +251,7 @@ proxy-groups:
 - name: ⬇️ 下载手选
   type: select
   proxies:
+  - 🔒 自建保留
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
   - 🇹🇼 台湾故转
@@ -250,6 +269,7 @@ proxy-groups:
   lazy: false
   url: https://github.com
   proxies:
+  - 🔒 自建保留
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
   - 🇹🇼 台湾故转
@@ -260,6 +280,7 @@ proxy-groups:
 - name: 📦 大文件下载
   type: select
   proxies:
+  - 🔒 自建保留
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
   - 🇹🇼 台湾故转
@@ -275,6 +296,7 @@ proxy-groups:
 - name: 🤗 HuggingFace
   type: select
   proxies:
+  - 🔒 自建保留
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
   - 🇹🇼 台湾故转
@@ -290,6 +312,7 @@ proxy-groups:
 - name: 🐙 GitHub
   type: select
   proxies:
+  - 🔒 自建保留
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
   - 🇹🇼 台湾故转
@@ -305,6 +328,7 @@ proxy-groups:
 - name: ▶️ YouTube
   type: select
   proxies:
+  - 🔒 自建保留
   - 🇭🇰 香港故转
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
@@ -318,6 +342,7 @@ proxy-groups:
 - name: 🎶 TikTok
   type: select
   proxies:
+  - 🔒 自建保留
   - 🇭🇰 香港故转
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
@@ -331,6 +356,7 @@ proxy-groups:
 - name: 🎬 流媒体
   type: select
   proxies:
+  - 🔒 自建保留
   - 🇭🇰 香港故转
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
@@ -343,6 +369,7 @@ proxy-groups:
   icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Stream.png
 - type: select
   proxies:
+  - 🔒 自建保留
   - 🇭🇰 香港故转
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
@@ -360,6 +387,7 @@ proxy-groups:
   icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Reddit.png
 - type: select
   proxies:
+  - 🔒 自建保留
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
   - 🇹🇼 台湾故转
@@ -378,6 +406,7 @@ proxy-groups:
   icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Game.png
 - type: select
   proxies:
+  - 🔒 自建保留
   - 🇭🇰 香港故转
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
@@ -395,6 +424,7 @@ proxy-groups:
   icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Apple.png
 - type: select
   proxies:
+  - 🔒 自建保留
   - 🇭🇰 香港故转
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
@@ -414,6 +444,7 @@ proxy-groups:
   type: select
   proxies:
   - 📦 大文件下载
+  - 🔒 自建保留
   - 🇭🇰 香港故转
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
@@ -426,6 +457,7 @@ proxy-groups:
   icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Steam.png
 - type: select
   proxies:
+  - 🔒 自建保留
   - 🇭🇰 香港故转
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
@@ -442,6 +474,7 @@ proxy-groups:
   icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Game.png
 - type: select
   proxies:
+  - 🔒 自建保留
   - 🇭🇰 香港故转
   - 🇸🇬 新加坡故转
   - 🇯🇵 日本故转
@@ -628,7 +661,7 @@ proxy-groups:
 - name: 🧰 全部手选
   type: select
   include-all: true
-  filter: ^((?!(直连|拒绝|COMPATIBLE|PASS|REJECT|REJECT-DROP)).)*$
+  filter: ^((?!(直连|拒绝|COMPATIBLE|PASS|REJECT|REJECT-DROP|BW-自建|自建)).)*$
   icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Server.png
 - name: ✨ 全部智选
   type: smart
@@ -643,10 +676,11 @@ proxy-groups:
     tolerance: 2
   strategy: sticky-sessions
   interval: 180
-  filter: ^((?!(直连|拒绝|COMPATIBLE|PASS|REJECT|REJECT-DROP)).)*$
+  filter: ^((?!(直连|拒绝|COMPATIBLE|PASS|REJECT|REJECT-DROP|BW-自建|自建)).)*$
   icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Auto_Link.png
 - type: select
   proxies:
+  - 🔒 自建保留
   - 直连
   - ✨ 全部智选
   - 🧰 全部手选
