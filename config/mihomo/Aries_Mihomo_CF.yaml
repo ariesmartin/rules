@@ -137,8 +137,8 @@ proxy-groups:
   interval: 180
   lazy: false
   proxies:
-  - 🔷 ED 全部故转
-  - 🔶 CC 全部故转
+  - 🧰 全部手选
+  - ✨ 全部智选
   icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/main/Icon/Color/Failover.png
 - name: 🔷 ED 全部故转
   type: fallback
